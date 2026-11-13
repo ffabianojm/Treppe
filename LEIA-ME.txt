@@ -1,0 +1,18 @@
+COMO GERAR O APK DO TREPPE
+
+1) Crie uma conta gratuita em github.com (se ainda nao tiver).
+2) Clique em "+" > "New repository". Nome: treppe. Marque "Private" se quiser. Clique em "Create repository".
+3) Na pagina do repositorio, clique em "uploading an existing file" e arraste TODO o conteudo
+   desta pasta (www, assets, .github, package.json, capacitor.config.json, .gitignore).
+   Importante: a pasta ".github" precisa subir junto. Se ela nao subir (pastas que comecam com ponto
+   as vezes ficam ocultas), faca assim: "Add file" > "Create new file", digite no nome
+   .github/workflows/build-apk.yml e cole o conteudo do arquivo build-apk.yml.
+   Depois clique em "Commit changes".
+4) Abra a aba "Actions". O build "Build APK" inicia sozinho (leva uns 5 a 8 minutos).
+   Se nao iniciar: clique em "Build APK" > "Run workflow".
+5) Quando ficar verde, clique no build > role ate "Artifacts" > baixe "Treppe-apk".
+   Descompacte o zip: dentro esta o app-debug.apk.
+6) Passe o app-debug.apk para o celular e instale. O Android vai pedir para permitir
+   "instalar apps de fontes desconhecidas" para o app que voce usou para abrir o arquivo.
+
+Se o build ficar vermelho, abra o passo que falhou e me mande a mensagem de erro.

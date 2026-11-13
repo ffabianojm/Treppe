@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Treppe – Aprenda alemão do A1 ao C2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3f5f9;--sf:#fff;--tx:#14213d;--mu:#5b6579;--ln:#d8dde8;--ac:#f2b705;--ok:#1f8a4c;--no:#c93a32;--inv:#14213d;--onac:#14213d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+/* Temas: light (Branco) é o padrão em :root; dark, blue e german sobrescrevem as variáveis */
+:root[data-theme="dark"]{--bg:#0a0a0a;--sf:#161616;--tx:#f2f2f2;--mu:#a3a3a3;--ln:#2e2e2e;--ac:#f2b705;--ok:#4cc27d;--no:#ff6b61;--inv:#f2f2f2;--onac:#14213d;color-scheme:dark}
+:root[data-theme="blue"]{--bg:#e4effc;--sf:#ffffff;--tx:#0b2a52;--mu:#4a6585;--ln:#b4cdec;--ac:#1e6fd9;--ok:#1f8a4c;--no:#c93a32;--inv:#0b3d80;--onac:#ffffff;color-scheme:light}
+:root[data-theme="german"]{--bg:#fbf6e6;--sf:#ffffff;--tx:#161616;--mu:#5f5a4c;--ln:#e2d6ae;--ac:#ffce00;--ok:#1f7a3d;--no:#dd0000;--inv:#111111;--onac:#161616;color-scheme:light}
+:root[data-theme="german"] header{border-bottom:0;border-image:linear-gradient(to right,#000 0 33.33%,#dd0000 33.33% 66.66%,#ffce00 66.66% 100%) 1;border-bottom:6px solid}
+:root[data-theme="german"] .bar .mark{border-left-color:#dd0000}
+:root[data-theme="german"] .stairs button[aria-current="true"]{border-left:6px solid #dd0000}
+:root[data-theme="german"] .msg{border-left-color:#dd0000}
+:root[data-theme="german"] .msg.go{border-left-color:#ffce00}
+:root[data-theme="german"] .t.d{border-color:#ffce00}
+:root[data-theme="midnight"]{--bg:#0f1521;--sf:#182033;--tx:#e8ecf4;--mu:#97a1b6;--ln:#2a3550;--ac:#f2b705;--ok:#4cc27d;--no:#ff6b61;--inv:#e8ecf4;--onac:#14213d;color-scheme:dark}
+:root[data-theme="forest"]{--bg:#e6f2e8;--sf:#ffffff;--tx:#123524;--mu:#4d6b5a;--ln:#b7d3bf;--ac:#2e9d5b;--ok:#1f8a4c;--no:#c93a32;--inv:#14532d;--onac:#ffffff;color-scheme:light}
+:root[data-theme="sunset"]{--bg:#fff1e6;--sf:#ffffff;--tx:#3b1d0e;--mu:#7a5844;--ln:#f1cfb3;--ac:#e8590c;--ok:#1f8a4c;--no:#b91c1c;--inv:#7c2d12;--onac:#ffffff;color-scheme:light}
+:root[data-theme="purple"]{--bg:#efe9fb;--sf:#ffffff;--tx:#2a1650;--mu:#66558a;--ln:#d3c6ee;--ac:#7c3aed;--ok:#1f8a4c;--no:#c93a32;--inv:#3b1d7a;--onac:#ffffff;color-scheme:light}
+:root[data-theme="sakura"]{--bg:#fdeef3;--sf:#ffffff;--tx:#4a1730;--mu:#86536b;--ln:#f3c9d9;--ac:#d6336c;--ok:#1f8a4c;--no:#b91c1c;--inv:#8a1f4d;--onac:#ffffff;color-scheme:light}
+:root[data-theme="sepia"]{--bg:#f4ecd8;--sf:#fbf6e8;--tx:#3e2f1c;--mu:#7a6a4f;--ln:#dccfae;--ac:#b5651d;--ok:#2f7d3a;--no:#b3261e;--inv:#4a3720;--onac:#ffffff;color-scheme:light}
+:root[data-theme="neon"]{--bg:#0a0e1f;--sf:#121833;--tx:#e6f1ff;--mu:#8fa3cc;--ln:#26305a;--ac:#00e5ff;--ok:#39ff88;--no:#ff4d8d;--inv:#00e5ff;--onac:#001a1f;color-scheme:dark}
+:root[data-theme="contrast"]{--bg:#000000;--sf:#000000;--tx:#ffffff;--mu:#e6e6e6;--ln:#ffffff;--ac:#ffe600;--ok:#00ff7f;--no:#ff6b6b;--inv:#ffe600;--onac:#000000;color-scheme:dark}
+:root[data-theme="neon"] .o button.ok,:root[data-theme="contrast"] .o button.ok{color:#000}
+:root[data-theme="contrast"] .t,:root[data-theme="contrast"] .stairs button,:root[data-theme="contrast"] .msg{border-width:2px}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 17px/1.5 "Source Sans 3",system-ui,sans-serif}
+h1,h2,.big{font-family:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;margin:0}
+.wrap{max-width:1000px;margin:0 auto;padding:20px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;padding-bottom:16px;border-bottom:3px solid var(--tx)}
+h1{font-size:clamp(34px,6vw,56px);font-weight:800;line-height:1}
+header p{margin:6px 0 0;color:var(--mu)}
+.tot{text-align:right}.tot b{font:800 28px "Bricolage Grotesque",system-ui,sans-serif}
+.tot span{display:block;color:var(--mu);font-size:15px}
+.grid{display:grid;grid-template-columns:200px 1fr;gap:28px;margin-top:24px}
+.stairs{display:flex;flex-direction:column;gap:6px;list-style:none;margin:0;padding:0}
+.stairs button{width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;background:var(--sf);color:var(--tx);border:1px solid var(--ln);border-radius:4px;font:600 17px "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+.stairs li:nth-child(2) button{margin-left:8px;width:calc(100% - 8px)}.stairs li:nth-child(3) button{margin-left:16px;width:calc(100% - 16px)}
+.stairs li:nth-child(4) button{margin-left:24px;width:calc(100% - 24px)}.stairs li:nth-child(5) button{margin-left:32px;width:calc(100% - 32px)}.stairs li:nth-child(6) button{margin-left:40px;width:calc(100% - 40px)}
+.stairs button[aria-current="true"]{background:var(--inv);color:var(--bg);border-color:var(--inv)}
+.stairs button:disabled{opacity:.55;cursor:not-allowed}
+.stairs small{font-weight:400;opacity:.85}
+button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.hero{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.big{font-size:clamp(72px,16vw,128px);font-weight:800;line-height:.9}
+.hero h2{font-size:24px}.hero p{margin:4px 0 0;color:var(--mu)}
+.bar{position:relative;height:18px;background:var(--sf);border:1px solid var(--ln);border-radius:2px;margin:18px 0 6px}
+.fill{height:100%;background:var(--ac);width:0;transition:width .3s}
+.mark{position:absolute;left:80%;top:-6px;bottom:-6px;border-left:2px solid var(--tx)}
+.lbl{display:flex;justify-content:flex-end;font-size:14px;color:var(--mu);padding-right:calc(20% - 40px)}
+.msg{padding:12px 14px;border-left:4px solid var(--ac);background:var(--sf);margin:16px 0 22px}
+.msg.go{border-color:var(--ok)}
+.msg button{margin-left:8px;padding:6px 12px;border:0;border-radius:3px;background:var(--ac);color:var(--onac);font:600 16px "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+ul.tasks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.t{background:var(--sf);border:1px solid var(--ln);border-radius:4px;padding:12px 14px}
+.t.d{border-color:var(--ok)}
+.t label{display:flex;gap:12px;cursor:pointer;align-items:flex-start}
+.t input{width:22px;height:22px;margin-top:2px;accent-color:var(--ok);flex:none}
+.t b{display:block}.t small{color:var(--mu);font-size:15px}
+details{margin:8px 0 0 34px}
+summary{cursor:pointer;color:var(--tx);font-weight:600;font-size:16px}
+.q{margin:8px 0}
+.o{display:flex;flex-wrap:wrap;gap:8px}
+.o button{padding:8px 14px;border:1px solid var(--tx);background:transparent;color:var(--tx);border-radius:3px;font:400 17px "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+.o button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.o button.no{border-color:var(--no);color:var(--no);text-decoration:line-through}
+.fb{min-height:1.5em;margin:6px 0 0;font-size:16px}
+.fb.ok{color:var(--ok)}.fb.no{color:var(--no)}
+.foot{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--mu);font-size:15px}
+.foot button{background:none;border:0;color:var(--mu);text-decoration:underline;font:inherit;cursor:pointer}
+.th{margin:10px 0;padding:12px 14px;border-left:3px solid var(--ac);background:var(--bg);font-size:16px;line-height:1.65}
+.ex,.sim button{padding:8px 14px;border:0;border-radius:3px;background:var(--ac);color:var(--onac);font:600 16px "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+.ex{margin:4px 0 8px}
+.sim{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 14px;border:2px solid var(--tx);margin:0 0 22px}
+.o button.sel{background:var(--inv);color:var(--bg)}
+.mu{color:var(--mu)}
+.th{overflow-x:auto}.th table{border-collapse:collapse;margin:8px 0;font-size:15px}.th td{border:1px solid var(--ln);padding:4px 10px}.th h4{margin:14px 0 4px;font:800 17px 'Bricolage Grotesque',system-ui,sans-serif}.th p{margin:6px 0}
+.e{padding:10px 0;border-top:1px solid var(--ln)}.e.ok .q{color:var(--ok)}.sc{margin:0 0 6px}
+.ti{padding:8px 10px;border:1px solid var(--tx);background:var(--sf);color:var(--tx);border-radius:3px;font:17px 'Source Sans 3',system-ui,sans-serif;width:min(260px,100%)}
+.th b,.th td,.th i{cursor:pointer}
+.tts{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 10px;padding:8px 10px;background:var(--sf);border:1px solid var(--ln)}
+.tts button{padding:6px 12px;border:1px solid var(--tx);background:transparent;color:var(--tx);border-radius:3px;font:600 15px 'Source Sans 3',system-ui,sans-serif;cursor:pointer}
+.pk{font-size:14px;color:var(--mu)}.rs{flex-basis:100%;font-size:15px}.rs:empty{display:none}
+.tm{position:relative;display:inline-block;margin-top:8px}
+.tm .tg{margin-top:0;display:inline-flex;align-items:center;gap:8px}
+.tmenu{max-height:min(70vh,460px);overflow-y:auto;position:absolute;right:0;top:calc(100% + 6px);z-index:20;min-width:190px;padding:6px;background:var(--sf);border:2px solid var(--tx);border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.25);text-align:left}
+.tmenu[hidden]{display:none}
+.tmenu button{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:0;background:transparent;color:var(--tx);border-radius:4px;font:600 16px 'Source Sans 3',system-ui,sans-serif;cursor:pointer;text-align:left}
+.tmenu button:hover{background:var(--bg)}
+.tmenu button[aria-checked="true"]{background:var(--inv);color:var(--bg)}
+.sw{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--tx);box-shadow:0 0 0 1px var(--bg) inset}
+.sw.w{background:#fff}.sw.b{background:#0a0a0a}.sw.a{background:linear-gradient(135deg,#1e6fd9 50%,#e4effc 50%)}
+.sw.g{background:linear-gradient(#000 0 33.3%,#dd0000 33.3% 66.6%,#ffce00 66.6%)}
+.sw.m{background:linear-gradient(135deg,#0f1521 50%,#f2b705 50%)}
+.sw.f{background:linear-gradient(135deg,#2e9d5b 50%,#e6f2e8 50%)}
+.sw.s{background:linear-gradient(135deg,#e8590c 50%,#ffd8a8 50%)}
+.sw.p{background:linear-gradient(135deg,#7c3aed 50%,#efe9fb 50%)}
+.sw.k{background:linear-gradient(135deg,#d6336c 50%,#fdeef3 50%)}
+.sw.e{background:linear-gradient(135deg,#b5651d 50%,#f4ecd8 50%)}
+.sw.n{background:linear-gradient(135deg,#0a0e1f 50%,#00e5ff 50%)}
+.sw.c{background:linear-gradient(135deg,#000 50%,#ffe600 50%)}
+.tmenu button[aria-checked="true"] .sw{border-color:var(--bg)}
+.tg{margin-top:8px;padding:6px 12px;border:1px solid var(--tx);background:transparent;color:var(--tx);border-radius:3px;font:600 15px 'Source Sans 3',system-ui,sans-serif;cursor:pointer}
+.card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;min-height:220px;margin:12px 0;padding:24px;background:var(--sf);color:var(--tx);border:2px solid var(--tx);border-radius:6px;cursor:pointer;text-align:center}
+.card .w{font:800 clamp(26px,6vw,40px)/1.2 'Bricolage Grotesque',system-ui,sans-serif}.card .lv,.card .hint{font-size:14px;color:var(--mu)}
+.fcb{display:flex;flex-wrap:wrap;gap:8px}.fcb button{padding:8px 16px;border:0;border-radius:3px;background:var(--ac);color:var(--onac);font:600 16px 'Source Sans 3',system-ui,sans-serif;cursor:pointer}
+.grp{list-style:none;margin:16px 0 0;padding-top:10px;border-top:2px solid var(--tx);font:800 20px "Bricolage Grotesque",system-ui,sans-serif}
+@media (max-width:720px){.grid{grid-template-columns:1fr}.stairs{flex-direction:row;overflow-x:auto;padding-bottom:4px}.stairs li{flex:none}.stairs li button{margin-left:0!important;width:auto!important}.tot{text-align:left}}
+@media (prefers-reduced-motion:reduce){.fill{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div><h1>Treppe</h1><p>Alemão degrau por degrau, do A1 ao C2.</p></div>
+<div class="tot"><b id="tp">0%</b><span id="tc">0 de 36 tarefas</span><div class="tm"><button class="tg" id="tg" aria-haspopup="true" aria-expanded="false" aria-controls="tmenu"><span class="sw" id="tsw"></span><span id="tl">Tema</span></button><div class="tmenu" id="tmenu" role="menu" aria-label="Escolher tema" hidden></div></div></div>
+</header>
+<div class="grid">
+<ul class="stairs" id="st"></ul>
+<main id="mn"></main>
+</div>
+</div>
+<script>
+var MIN=80;
+var D=[
+["A1","Iniciante",[
+["Cumprimentos","Guten Morgen, Guten Tag, Gute Nacht, Auf Wiedersehen.","Como se diz “Bom dia”?",["Guten Morgen","Gute Nacht","Auf Wiedersehen"],0],
+["Apresentar-se","Verbo heißen e a frase Ich heiße…","Complete: Ich ___ Anna.",["heiße","heißt","heißen"],0],
+["Verbo sein","ich bin, du bist, er/sie/es ist, wir/sie sind.","Complete: Er ___ aus Brasilien.",["bin","ist","sind"],1],
+["Artigos der, die, das","Decore o gênero de 20 substantivos comuns.","Qual artigo? ___ Tisch (mesa)",["der","die","das"],0],
+["Números de 0 a 20","null, eins, zwei… zwölf… zwanzig.","Como se escreve 12?",["zwölf","zehn","zwei"],0],
+["Perguntas básicas","Wie, Wo, Woher, Was.","Qual frase pergunta “Onde você mora?”",["Wo wohnst du?","Wie heißt du?","Woher kommst du?"],0]]],
+["A2","Elementar",[
+["Perfekt","haben/sein + particípio (gegessen, gegangen).","Complete: Ich habe gestern Pizza ___.",["gegessen","esse","aß"],0],
+["Acusativo","Só o masculino muda: der → den.","Complete: Ich sehe ___ Mann.",["der","den","dem"],1],
+["Verbos modais","können, müssen, wollen, dürfen.","Complete: Ich ___ Deutsch sprechen.",["kann","kannst","können"],0],
+["Verbos separáveis","aufstehen, einkaufen, anrufen.","Qual frase está correta?",["Ich stehe um 7 Uhr auf.","Ich aufstehe um 7 Uhr.","Ich um 7 Uhr stehe auf."],0],
+["Conector weil","Em frases com weil, o verbo vai para o fim.","Qual frase está correta?",["Ich bleibe zu Hause, weil ich krank bin.","Ich bleibe zu Hause, weil bin ich krank.","Ich bleibe zu Hause, weil ich bin krank."],0],
+["Dativo","Feminino: die → der. Verbos como geben, helfen.","Complete: Ich gebe ___ Frau ein Buch.",["der","die","den"],0]]],
+["B1","Intermediário",[
+["Präteritum","war, hatte e verbos modais no passado.","Complete: Er ___ gestern zu Hause.",["war","wäre","wird"],0],
+["Oração com dass","O verbo conjugado vai para o fim.","Complete: Ich glaube, dass er morgen ___.",["kommt","kommen","komme"],0],
+["Konjunktiv II","würde + infinitivo, hätte, wäre.","Complete: Wenn ich Zeit ___, würde ich reisen.",["hätte","habe","hatte"],0],
+["Orações relativas","der, die, das, den, dem conforme o caso.","Complete: Der Mann, ___ dort steht, ist mein Lehrer.",["der","den","dem"],0],
+["Voz passiva","werden + particípio.","Complete: Das Haus ___ gebaut.",["wird","hat","ist"],0],
+["Verbos reflexivos","sich freuen, sich erinnern, sich interessieren.","Complete: Ich freue ___ auf den Urlaub.",["mich","mir","sich"],0]]],
+["B2","Intermediário superior",[
+["Genitivo","des/der + terminação -(e)s no masculino.","Complete: Das Auto ___ Mannes.",["der","des","dem"],1],
+["Konjunktiv I","Discurso indireto: er sei, sie habe.","Complete: Er sagt, er ___ krank.",["sei","war","seien"],0],
+["Verbos com preposição","warten auf, denken an, sich ärgern über.","Complete: Ich warte ___ den Bus.",["auf","für","an"],0],
+["Nominalização","-ung, -keit, -heit transformam verbos e adjetivos.","Qual o substantivo de “entscheiden”?",["Entscheidung","Entscheider","Entscheidend"],0],
+["Partizip I e II como adjetivo","Prefira o Partizip I para ação em curso.","Complete: Das ___ Kind (que dorme).",["schlafende","geschlafene","schläft"],0],
+["Conectores de concessão","obwohl, trotzdem, dennoch.","Complete: ___ er müde war, arbeitete er weiter.",["Obwohl","Weil","Damit"],0]]],
+["C1","Avançado",[
+["Registro formal","Linguagem de e-mails e documentos.","Qual frase é mais formal?",["Ich bitte um Ihre Rückmeldung.","Sag mir mal Bescheid.","Meld dich mal."],0],
+["Konjunktiv II do passado","hätte/wäre + particípio.","Complete: Ich ___ gekommen, wenn ich es gewusst hätte.",["wäre","hätte","würde"],0],
+["Construções participiais","Orações longas viram adjetivos.","Complete: Die ___ Probleme (resolvidos).",["gelösten","lösenden","löste"],0],
+["Expressões idiomáticas","Aprenda por sentido, não palavra por palavra.","“Das ist mir Wurst” significa:",["Tanto faz para mim","Estou com fome","Gosto de salsicha"],0],
+["Funktionsverbgefüge","Verbo + substantivo fixos: Entscheidung treffen.","Complete: eine Entscheidung ___",["treffen","machen","tun"],0],
+["Conectores de contraste","trotzdem, dennoch, hingegen.","Qual expressa um contraste inesperado?",["Trotzdem","Deshalb","Außerdem"],0]]],
+["C2","Proficiência",[
+["Idiomas e provérbios","Leia jornais e ouça podcasts nativos.","“Jemandem einen Bären aufbinden” significa:",["Enganar alguém","Dar um presente","Carregar peso"],0],
+["Konjunktiv II refinado","Uso literário e cortês.","Complete: Es ___ mir lieb, wenn du kämst.",["wäre","ist","war"],0],
+["Vocabulário sofisticado","Sinônimos e nuances de registro.","Qual palavra é sinônimo de “schnell”?",["zügig","gemächlich","träge"],0],
+["Linguagem figurada","Metáforas comuns na escrita culta.","“Der Zahn der Zeit” refere-se a:",["Ação desgastante do tempo","Dor de dente","Hora do dentista"],0],
+["Estilo nominal","Típico de textos jurídicos e acadêmicos.","Qual frase usa estilo nominal?",["Nach der Prüfung der Unterlagen erfolgt die Zusage.","Wenn wir die Unterlagen prüfen, sagen wir zu.","Wir prüfen und sagen zu."],0],
+["Inversão condicional","Omitir wenn e inverter o verbo.","Complete: Hätte ich das gewusst, ___ ich anders entschieden.",["hätte","habe","wurde"],0]]]
+];
+var T=[[
+'<b>Guten Morgen</b> (bom dia), <b>Guten Tag</b> (olá, boa tarde), <b>Guten Abend</b> (boa noite ao chegar), <b>Gute Nacht</b> (boa noite ao dormir), <b>Hallo</b> (oi), <b>Tschüss</b> (tchau), <b>Auf Wiedersehen</b> (adeus, formal).<br>Também: <b>Danke</b> (obrigado) e <b>Bitte</b> (por favor / de nada).',
+'<b>heißen</b> = chamar-se: ich heiße, du heißt, er/sie heißt, wir/sie heißen.<br><b>Ich heiße Anna.</b> · <b>Wie heißt du?</b> (informal) · <b>Wie heißen Sie?</b> (formal).<br>Alternativa: <b>Ich bin Anna.</b>',
+'ich <b>bin</b>, du <b>bist</b>, er/sie/es <b>ist</b>, wir <b>sind</b>, ihr <b>seid</b>, sie/Sie <b>sind</b>.<br>Ich bin Brasilianer. Er ist aus Brasilien. Woher kommst du? Ich komme aus São Paulo.',
+'Todo substantivo tem gênero: <b>der</b> (masculino), <b>die</b> (feminino), <b>das</b> (neutro). No plural, sempre <b>die</b>. Substantivos levam inicial maiúscula.<br>der Tisch, die Lampe, das Buch. Aprenda cada palavra junto com o artigo.',
+'0 null · 1 eins · 2 zwei · 3 drei · 4 vier · 5 fünf · 6 sechs · 7 sieben · 8 acht · 9 neun · 10 zehn · 11 elf · 12 zwölf · 13 dreizehn · 14 vierzehn · 15 fünfzehn · 16 sechzehn · 17 siebzehn · 18 achtzehn · 19 neunzehn · 20 zwanzig.<br>Atenção: 16 = sech<b>zehn</b> (sem s) e 17 = sieb<b>zehn</b> (sem en).',
+'<b>Wie</b> (como): Wie heißt du? · <b>Wo</b> (onde): Wo wohnst du? · <b>Woher</b> (de onde): Woher kommst du? · <b>Was</b> (o quê) · <b>Wer</b> (quem) · <b>Wann</b> (quando).<br>O verbo vem em 2º lugar. Pergunta de sim/não começa com o verbo: <b>Wohnst du in Berlin?</b>'],[
+'Passado falado: <b>haben/sein</b> (2ª posição) + <b>particípio</b> (no fim).<br>Ich habe Pizza gegessen. Er ist nach Berlin gefahren.<br>Regulares: ge-…-t (gemacht). Irregulares: ge-…-en (gegessen). Verbos de movimento e mudança de estado usam <b>sein</b>.',
+'Acusativo = objeto direto. Só o masculino muda: <b>der → den</b>, <b>ein → einen</b>. Feminino, neutro e plural ficam iguais.<br>Ich sehe <b>den</b> Mann. Ich habe <b>einen</b> Hund. Ich sehe die Frau, das Kind.',
+'<b>können</b> (poder/saber), <b>müssen</b> (ter que), <b>wollen</b> (querer), <b>dürfen</b> (ter permissão), <b>sollen</b> (dever).<br>ich kann, du kannst, er kann. O modal fica na 2ª posição e o outro verbo vai ao fim, no infinitivo: <b>Ich kann Deutsch sprechen.</b>',
+'Prefixos como auf-, an-, ein-, mit- se separam no presente e vão ao fim da frase.<br><b>aufstehen</b> → Ich stehe um 7 Uhr <b>auf</b>.<br><b>einkaufen</b> → Wir kaufen heute <b>ein</b>.<br>No Perfekt: aufgestanden, eingekauft.',
+'<b>weil</b> (porque) abre oração subordinada: o verbo conjugado vai para o <b>fim</b>.<br>Ich bleibe zu Hause, weil ich krank <b>bin</b>.<br>Já <b>denn</b> não muda a ordem: Ich bleibe zu Hause, denn ich bin krank.',
+'Dativo = objeto indireto (a quem). m. <b>dem</b>, f. <b>der</b>, n. <b>dem</b>, plural <b>den</b> (+n no substantivo).<br>Ich gebe <b>der</b> Frau ein Buch.<br>Verbos com dativo: helfen, danken, gefallen. Preposições: mit, bei, nach, von, zu, aus, seit.'],[
+'Passado escrito e narrativo. Com sein, haben e modais é comum também na fala.<br>sein: ich <b>war</b>, du warst, wir waren · haben: ich <b>hatte</b> · können: ich <b>konnte</b>.<br>Er war gestern zu Hause. Ich hatte keine Zeit.',
+'<b>dass</b> (que) introduz oração subordinada; o verbo conjugado vai ao fim.<br>Ich glaube, dass er morgen <b>kommt</b>. Ich weiß, dass du Zeit <b>hast</b>.<br>Usa-se após glauben, denken, sagen, wissen, hoffen.',
+'Irrealidade e pedidos educados. Use <b>würde + infinitivo</b>; para sein e haben, <b>wäre</b> e <b>hätte</b>.<br>Wenn ich Zeit <b>hätte</b>, <b>würde</b> ich reisen.<br>Educado: Könnten Sie mir helfen? Ich hätte gern einen Kaffee.',
+'O pronome relativo é o artigo definido (exceto genitivo e dativo plural). O <b>gênero</b> vem do substantivo; o <b>caso</b>, da função na oração. Verbo ao fim, entre vírgulas.<br>Der Mann, <b>der</b> dort steht, ist mein Lehrer. (sujeito)<br>Der Mann, <b>den</b> ich kenne… (objeto direto)',
+'<b>werden</b> + particípio.<br>Das Haus <b>wird</b> gebaut. (presente)<br>Das Haus <b>wurde</b> gebaut. (passado)<br>Agente com <b>von</b> + dativo: Das Haus wird von Arbeitern gebaut.',
+'O reflexivo concorda com o sujeito. Acusativo: mich, dich, sich, uns, euch, sich. Dativo: mir, dir, sich…<br>Ich freue <b>mich</b> auf den Urlaub. Er interessiert <b>sich</b> für Musik. Ich wasche <b>mir</b> die Hände.'],[
+'Indica posse. Masculino e neutro: <b>des</b> + substantivo com -(e)s. Feminino e plural: <b>der</b>.<br>Das Auto <b>des Mannes</b>. Die Tasche <b>der Frau</b>.<br>Preposições com genitivo: wegen, trotz, während, statt.',
+'Discurso indireto formal (jornais). Raiz do infinitivo + -e: er <b>sei</b>, sie <b>habe</b>, er <b>komme</b>.<br>Er sagt, er <b>sei</b> krank. Sie meint, sie <b>habe</b> keine Zeit.<br>Quando a forma coincide com o indicativo, usa-se o Konjunktiv II.',
+'Cada verbo pede uma preposição e um caso fixos. Decore em bloco.<br>warten <b>auf</b> + Akk · denken <b>an</b> + Akk · sich ärgern <b>über</b> + Akk · träumen <b>von</b> + Dat.<br>Pergunta: Worauf wartest du? (coisa) · Auf wen wartest du? (pessoa)',
+'Sufixos formam substantivos: <b>-ung</b> (fem.): entscheiden → die Entscheidung · <b>-keit/-heit</b> (fem.): möglich → die Möglichkeit · <b>-er</b> (agente, masc.): lehren → der Lehrer.<br>Muito comum em textos formais.',
+'Particípios funcionam como adjetivos e recebem terminação.<br><b>Partizip I</b> (-d): ação em curso: das schlafen<b>de</b> Kind.<br><b>Partizip II</b>: ação concluída: das gelöste Problem.<br>As terminações seguem a declinação dos adjetivos.',
+'<b>obwohl</b> (embora) é subordinante: verbo ao fim. <b>trotzdem</b> e <b>dennoch</b> (mesmo assim) são advérbios: verbo logo depois.<br>Obwohl er müde war, arbeitete er weiter.<br>Er war müde, trotzdem arbeitete er weiter.'],[
+'Formal: Sie, Konjunktiv, nominalização, fórmulas fixas. Informal: du, gírias, contrações.<br>Formal: Ich bitte um Ihre Rückmeldung. Mit freundlichen Grüßen.<br>Informal: Meld dich mal! Bis bald!<br>Adapte ao interlocutor e ao meio.',
+'Irreal no passado: <b>hätte/wäre + particípio</b>. Verbos de movimento usam wäre.<br>Wenn ich es gewusst hätte, <b>wäre</b> ich gekommen.<br>Wenn er gelernt hätte, hätte er bestanden.<br>Com modais: Ich hätte kommen können.',
+'Particípio + substantivo substitui uma oração relativa.<br>Die Probleme, <b>die gelöst wurden</b> → die <b>gelösten</b> Probleme.<br>Ampliado: die von der Firma gelösten Probleme.<br>Frequente em textos jornalísticos e acadêmicos.',
+'Expressões não se traduzem literalmente; aprenda o sentido.<br><b>Das ist mir Wurst</b> = tanto faz.<br><b>Ich verstehe nur Bahnhof</b> = não entendo nada.<br><b>Daumen drücken</b> = torcer.<br>Anote cada uma com uma frase de exemplo.',
+'Combinações fixas de verbo + substantivo. O substantivo traz o sentido; o verbo é fixo.<br>eine Entscheidung <b>treffen</b> · Angst <b>haben</b> · in Frage <b>stellen</b> · zur Verfügung <b>stehen</b> · Rücksicht <b>nehmen</b>.<br>Soam mais formais que um verbo simples.',
+'<b>trotzdem</b>/<b>dennoch</b> (mesmo assim), <b>hingegen</b>/<b>jedoch</b> (por outro lado), <b>allerdings</b> (porém). <b>deshalb</b> = consequência; <b>außerdem</b> = adição.<br>Er ist krank, <b>trotzdem</b> geht er zur Arbeit. O verbo vem logo após o conector.'],[
+'Domínio de nuances culturais.<br><b>Jemandem einen Bären aufbinden</b> = enganar alguém.<br><b>Den Nagel auf den Kopf treffen</b> = acertar em cheio.<br><b>Wer rastet, der rostet</b> = quem para, enferruja.<br>Jornais e podcasts mostram esses usos.',
+'Cortesia, hipótese e desejo em registro elevado.<br>Es <b>wäre</b> mir lieb, wenn du <b>kämst</b>. (forma sintética, literária)<br>Forma comum: …wenn du kommen würdest.<br>Prefira formas sintéticas com sein, haben, modais e verbos curtos.',
+'Domine sinônimos e registros.<br><b>schnell</b> (neutro) · <b>zügig</b>/<b>rasch</b> (formal) · <b>flott</b> (coloquial).<br><b>anfangen</b> · <b>beginnen</b> (formal) · <b>loslegen</b> (coloquial).<br>Pergunte sempre: em que contexto isso soa natural?',
+'Metáforas fixas na escrita culta.<br><b>Der Zahn der Zeit</b> = o desgaste causado pelo tempo.<br><b>Ein Licht am Ende des Tunnels</b> = esperança.<br><b>Den roten Faden verlieren</b> = perder o fio da meada.<br>Observe-as em editoriais e ensaios.',
+'Substantivos no lugar de verbos: estilo denso e formal (leis, ciência).<br>Verbal: Wenn wir die Unterlagen prüfen, sagen wir zu.<br>Nominal: <b>Nach der Prüfung</b> der Unterlagen <b>erfolgt die Zusage</b>.<br>Marcas: genitivos encadeados, Funktionsverbgefüge, preposições (nach, bei, infolge).',
+'Omite-se <b>wenn</b> e o verbo conjugado abre a oração.<br>Wenn ich das gewusst hätte, hätte ich anders entschieden. → <b>Hätte</b> ich das gewusst, hätte ich anders entschieden.<br>Também: Wäre er pünktlich gewesen, … · Sollte es regnen, …']];
+var sim=null;
+function shuf(a){return a.map(function(x){return[Math.random(),x]}).sort(function(a,b){return a[0]-b[0]}).map(function(x){return x[1]})}
+function simStart(){sim={l:cur,done:false,sc:0,qs:shuf(D[cur][2].reduce(function(p,t){return p.concat(t[6]?t[6].filter(function(x){return x.k==='m'}).map(function(x){return[x.q,x.o,x.a]}):[[t[2],t[3],t[4]]])},[])).slice(0,20).map(function(t){return{q:t[0],o:shuf(t[1].map(function(x,i){return[x,i===t[2]]})),s:-1}})};simView()}
+function simView(){
+var h='<h2>Simulado '+D[sim.l][0]+'</h2><p class="mu">'+sim.qs.length+' questões do módulo. Escolha uma resposta em cada uma e clique em Corrigir.</p><ul class="tasks">';
+sim.qs.forEach(function(q,i){h+='<li class="t"><p class="q"><b>'+(i+1)+'.</b> '+q.q+'</p><div class="o">'+q.o.map(function(o,n){var c='';if(sim.done){if(o[1])c='ok';else if(q.s===n)c='no'}else if(q.s===n)c='sel';return '<button class="'+c+'" data-sq="'+i+'" data-so="'+n+'"'+(sim.done?' disabled':'')+'>'+o[0]+'</button>'}).join('')+'</div></li>'});
+h+='</ul><div class="msg'+(sim.done?' go':'')+'">'+(sim.done?'<b>Resultado: '+sim.sc+' de '+sim.qs.length+' ('+Math.round(sim.sc/sim.qs.length*100)+'%)</b>. Melhor resultado: '+done['s'+sim.l]+'%. <button data-sim="1">Refazer</button> ':'<button data-grade="1">Corrigir simulado</button> ')+'<button data-back="1">Voltar ao módulo</button></div>';
+$('mn').innerHTML=h}
+var done={},cur=0;
+try{done=JSON.parse(localStorage.getItem("treppe")||"{}")}catch(e){}
+function save(){try{localStorage.setItem("treppe",JSON.stringify(done))}catch(e){}}
+function cnt(i){var n=0;D[i][2].forEach(function(_,j){if(done[i+"-"+j])n++});return n}
+function pct(i){return Math.round(cnt(i)/D[i][2].length*100)}
+function open_(i){return i===0||pct(i-1)>=MIN}
+function $(id){return document.getElementById(id)}
+function stairs(){
+$("st").innerHTML=D.map(function(l,i){var ok=open_(i);
+return '<li><button data-l="'+i+'"'+(ok?'':' disabled')+(i===cur?' aria-current="true"':'')+'><span>'+l[0]+' <small>'+(ok?pct(i)+'%':'bloqueado')+'</small></span></button></li>'}).join("")+'<li><button data-fcall="1"'+(cur===-1?' aria-current="true"':'')+'><span>Flashcards <small>'+cards().length+'</small></span></button></li>'}
+function level(){
+var l=D[cur];
+$("mn").innerHTML='<div class="hero"><div class="big" id="bp"></div><div><h2>'+l[0]+' · '+l[1]+'</h2><p id="bc"></p></div></div>'+
+'<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="pb"><div class="fill" id="bf"></div><div class="mark"></div></div><div class="lbl">meta '+MIN+'%</div>'+
+'<div class="msg" id="bm"></div><div class="sim"><span><b>Simulado do módulo '+l[0]+'</b>'+(done['s'+cur]!==undefined?' · melhor resultado: '+done['s'+cur]+'%':'')+'</span><button data-sim="1">Fazer simulado</button></div><div class="sim"><span><b>Flashcards do módulo '+l[0]+'</b> · '+cards(cur).length+' cartas de lições concluídas</span><button data-fc="'+cur+'">Estudar flashcards</button></div><ul class="tasks">'+l[2].map(function(t,j){var k=cur+"-"+j;
+return (t[5]?'<li class="grp">'+t[5]+'</li>':'')+'<li class="t'+(done[k]?' d':'')+'"><label><input type="checkbox" data-k="'+k+'"'+(done[k]?' checked':'')+'><span><b>'+t[0]+'</b><small>'+t[1]+'</small></span></label>'+
+'<details><summary>Abrir lição</summary><div class="th">'+T[cur][j]+'</div><button class="ex" data-x="1">Fazer exercício</button><div class="qz" hidden><p class="q">'+t[2]+'</p><div class="o" data-t="'+j+'">'+t[3].map(function(o,n){return '<button data-n="'+n+'">'+o+'</button>'}).join("")+'</div><p class="fb" aria-live="polite"></p></div></details></li>'}).join("")+'</ul>'+
+'<div class="foot"><span>Seu progresso fica salvo neste navegador.</span><button id="rs">Zerar progresso</button></div>';fill();
+upd()}
+function nz(s){return s.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss').replace(/[.!?¿]+$/,'').replace(/\s+/g,' ').trim()}
+function tb(r){return '<table>'+r.map(function(x){return '<tr>'+x.split('|').map(function(c){return '<td>'+c+'</td>'}).join('')+'</tr>'}).join('')+'</table>'}
+function fill(){document.querySelectorAll('.th').forEach(function(h){h.insertAdjacentHTML('afterbegin','<div class="tts"><span class="pk">Clique em uma palavra ou selecione um trecho</span><button data-ls="1">Ouvir</button><button data-ls="slow">Ouvir devagar</button><button data-mic="1">Testar minha pronúncia</button><span class="rs" aria-live="polite"></span></div>')});document.querySelectorAll('.qz').forEach(function(z,j){var t=D[cur][2][j];if(!t[6])return;z.innerHTML='<p class="sc"></p>'+t[6].map(function(x,i){return '<div class="e" data-t="'+j+'" data-i="'+i+'"><p class="q"><b>'+(i+1)+'.</b> '+x.q+'</p>'+(x.k==='m'?'<div class="o">'+x.o.map(function(o,n){return '<button data-m="'+n+'">'+o+'</button>'}).join('')+'</div>':'<div class="o"><input class="ti" aria-label="Resposta" autocomplete="off"><button data-chk="1">Verificar</button></div>')+'<p class="fb" aria-live="polite"></p></div>'}).join('');sc(z)})}
+function sc(z){var n=z.querySelectorAll('.e').length,k=z.querySelectorAll('.e.ok').length;z.querySelector('.sc').innerHTML='<b>'+k+' de '+n+' corretos</b>'+(k===n?'. Tudo certo! Agora marque a lição como concluída.':'')}
+document.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.classList.contains('ti'))e.target.nextElementSibling.click()});
+var pick='';
+function tm(b,m){b.closest('.tts').querySelector('.rs').textContent=m}
+function say(t,rate){if(!window.speechSynthesis)return 0;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t.replace(/_+/g,' '));u.lang='de-DE';u.rate=rate;var vs=speechSynthesis.getVoices(),v=vs.filter(function(x){return x.lang&&x.lang.toLowerCase().indexOf('de')===0})[0];if(v)u.voice=v;speechSynthesis.speak(u);return vs.length&&!v?2:1}
+function clean(s){return nz(s).replace(/[^a-z0-9 ]/g,'')}
+function lev(a,b){var d=[],i,j;for(i=0;i<=a.length;i++)d[i]=[i];for(j=1;j<=b.length;j++)d[0][j]=j;for(i=1;i<=a.length;i++)for(j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[a.length][b.length]}
+function listen(b,t){
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(!SR){tm(b,'Este navegador não reconhece voz. Use Chrome, Edge ou Safari.');return}
+try{var r=new SR();r.lang='de-DE';r.maxAlternatives=3;tm(b,'Ouvindo… fale agora.');
+r.onresult=function(e){var best=0,heard='',g=clean(t);for(var i=0;i<e.results[0].length;i++){var h=e.results[0][i].transcript,c=clean(h),s=1-lev(g,c)/Math.max(g.length,c.length,1);if(s>=best){best=s;heard=h}}var p=Math.round(best*100);tm(b,(p>=90?'Muito bem! ':p>=70?'Quase lá. ':'Ainda não. ')+'Ouvi “'+heard+'” ('+p+'% de semelhança com “'+t+'”).'+(p<90?' Ouça de novo e repita.':''))};
+r.onerror=function(e){tm(b,e.error==='not-allowed'||e.error==='service-not-allowed'?'Microfone bloqueado. Permita o microfone ou abra o site em uma aba própria.':e.error==='no-speech'?'Não ouvi nada. Tente de novo.':'Não consegui ouvir ('+e.error+').')};
+r.start()}catch(x){tm(b,'Não foi possível iniciar o microfone.')}}
+document.addEventListener('selectionchange',function(){var s=getSelection();if(!s.rangeCount||s.isCollapsed)return;var n=s.anchorNode;n=n&&(n.nodeType===3?n.parentNode:n);if(n&&n.closest&&n.closest('.th')){pick=s.toString().trim();document.querySelectorAll('.pk').forEach(function(p){p.textContent='Selecionado: “'+pick+'”'})}});
+document.addEventListener('click',function(e){var c=e.target.closest('.th b,.th td,.th i');if(c){var r=document.createRange();r.selectNodeContents(c);var s=getSelection();s.removeAllRanges();s.addRange(r)}});
+function upd(){
+var p=pct(cur),n=D[cur][2].length,c=cnt(cur),tot=0,all=0;
+D.forEach(function(_,i){tot+=cnt(i);all+=D[i][2].length});
+$("tp").textContent=Math.round(tot/all*100)+"%";$("tc").textContent=tot+" de "+all+" tarefas";
+$("bp").textContent=p+"%";$("bc").textContent=c+" de "+n+" tarefas concluídas";
+$("bf").style.width=p+"%";$("pb").setAttribute("aria-valuenow",p);
+var m=$("bm"),nx=D[cur+1];
+if(!nx){m.className="msg"+(p===100?" go":"");m.textContent=p===100?"Parabéns! Você concluiu todos os níveis.":"Último nível. Conclua as tarefas para fechar a jornada."}
+else if(p>=MIN){m.className="msg go";m.innerHTML='Meta atingida! O nível '+nx[0]+' está liberado. <button data-l="'+(cur+1)+'">Ir para '+nx[0]+'</button>'}
+else{var need=Math.ceil(MIN/100*n)-c;m.className="msg";m.textContent="Faltam "+need+" tarefa"+(need>1?"s":"")+" ("+(MIN-p)+" pontos percentuais) para liberar o "+nx[0]+"."}
+stairs()}
+document.addEventListener("click",function(e){
+var b=e.target.closest("button");if(!b)return;
+if(b.dataset.ls){if(!pick){tm(b,'Primeiro clique em uma palavra ou selecione um trecho da lição.');return}var k=say(pick,b.dataset.ls==='slow'?0.6:0.9);tm(b,k===0?'Seu navegador não tem síntese de voz.':k===2?'Não achei voz alemã neste dispositivo; o som pode sair errado. Instale uma voz alemã nas configurações de idioma do sistema.':'');return}
+if(b.dataset.mic){if(!pick){tm(b,'Primeiro clique na palavra ou frase que quer treinar.');return}listen(b,pick);return}
+if(b.dataset.fc!==undefined){fcStart(+b.dataset.fc);window.scrollTo({top:0});return}
+if(b.dataset.fcall){if(cur>=0)lastCur=cur;cur=-1;stairs();fcStart();window.scrollTo({top:0});return}
+if(b.dataset.flip){fc.flip=!fc.flip;fcView();return}
+if(b.dataset.say){say(fc.q[0].de,0.9);return}
+if(b.dataset.know){fc.q.shift();fc.flip=false;fcView();return}
+if(b.dataset.rev){fc.q.push(fc.q.shift());fc.flip=false;fcView();return}
+if(b.dataset.again){fcStart(fc.lv);return}
+if(b.dataset.fcback){if(fc.lv===undefined)cur=lastCur;stairs();level();return}
+var ee=b.closest('.e');
+if(ee&&(b.dataset.m!==undefined||b.dataset.chk)){
+var x=D[cur][2][+ee.dataset.t][6][+ee.dataset.i],fb=ee.querySelector('.fb'),ok,mc=b.dataset.m!==undefined;
+if(mc){ok=+b.dataset.m===x.a}else{var v=nz(ee.querySelector('.ti').value);ok=x.a.some(function(s){return nz(s)===v})}
+if(ok){ee.classList.add('ok');fb.className='fb ok';fb.textContent='Correto!'+(x.n?' '+x.n:'');ee.querySelectorAll('button,input').forEach(function(y){y.disabled=true});if(mc)b.className='ok';sc(ee.closest('.qz'))}
+else{fb.className='fb no';fb.textContent=mc?'Ainda não. Tente outra opção.':'Ainda não. Confira a grafia e tente de novo.';if(mc){b.className='no';b.disabled=true}}
+return}
+if(b.dataset.x!==undefined){var z=b.nextElementSibling;z.hidden=!z.hidden;b.textContent=z.hidden?'Fazer exercício':'Ocultar exercício';return}
+if(b.dataset.sim){simStart();window.scrollTo({top:0});return}
+if(b.dataset.back){level();window.scrollTo({top:0});return}
+if(b.dataset.sq!==undefined){sim.qs[+b.dataset.sq].s=+b.dataset.so;b.parentNode.querySelectorAll('button').forEach(function(x){x.classList.remove('sel')});b.classList.add('sel');return}
+if(b.dataset.grade){sim.sc=sim.qs.filter(function(q){return q.s>=0&&q.o[q.s][1]}).length;sim.done=true;var pc=Math.round(sim.sc/sim.qs.length*100);done['s'+sim.l]=Math.max(done['s'+sim.l]||0,pc);save();simView();window.scrollTo({top:0});return}
+if(b.dataset.l!==undefined&&!b.disabled){cur=+b.dataset.l;stairs();level();window.scrollTo({top:0});return}
+if(b.id==="rs"){if(confirm("Apagar todo o progresso?")){done={};save();cur=0;level()}return}
+var o=b.parentNode;
+if(o&&o.dataset&&o.dataset.t!==undefined){
+var t=D[cur][2][+o.dataset.t],fb=o.nextElementSibling;
+if(+b.dataset.n===t[4]){b.className="ok";fb.className="fb ok";fb.textContent="Correto! Agora marque a tarefa como concluída.";
+o.querySelectorAll("button").forEach(function(x){x.disabled=true})}
+else{b.className="no";b.disabled=true;fb.className="fb no";fb.textContent="Ainda não. Tente outra opção."}}
+});
+document.addEventListener("change",function(e){
+var k=e.target.dataset&&e.target.dataset.k;if(!k)return;
+if(e.target.checked)done[k]=true;else delete done[k];
+save();e.target.closest(".t").classList.toggle("d",e.target.checked);upd()});
+var N=[
+['Cumprimentos e despedidas','<b>Hallo</b> (oi) · <b>Guten Morgen</b> (manhã) · <b>Guten Tag</b> (dia) · <b>Guten Abend</b> (noite, ao chegar) · <b>Gute Nacht</b> (ao dormir) · <b>Tschüss</b> (tchau) · <b>Auf Wiedersehen</b> (formal).','Qual despedida é formal?',['Auf Wiedersehen','Tschüss','Hallo'],'Módulo 1 · Primeiros passos'],
+['Apresentação pessoal','<b>Ich heiße / Ich bin</b> Ana. <b>Ich komme aus</b> Brasilien. <b>Ich wohne in</b> Vitória. <b>Ich bin</b> 25 <b>Jahre alt</b>.<br>Perguntas: Wie heißt du? Woher kommst du? Wo wohnst du? Wie alt bist du?','Como dizer “Tenho 25 anos”?',['Ich bin 25 Jahre alt.','Ich habe 25 Jahre.','Ich wohne 25 Jahre.']],
+['Alfabeto e pronúncia','<b>ä, ö, ü</b> (tremas) · <b>ß</b> = s longo · <b>ei</b> = “ai” · <b>ie</b> = “i” longo · <b>eu/äu</b> = “ói” · <b>sch</b> = “x” · <b>st/sp</b> no início = “scht/schp” · <b>ch</b> = som suave de ar.','Como se pronuncia “ei” em “mein”?',['“ai”','“ei”','“i” longo']],
+['Pronomes pessoais','<b>ich</b> eu · <b>du</b> tu · <b>er</b> ele · <b>sie</b> ela · <b>es</b> neutro · <b>wir</b> nós · <b>ihr</b> vocês (informal) · <b>sie</b> eles · <b>Sie</b> o senhor/vocês (formal, sempre maiúsculo).','Qual pronome é formal?',['Sie','sie','ihr']],
+['sein, haben e heißen','sein: bin, bist, ist, sind, seid, sind<br>haben: habe, hast, hat, haben, habt, haben<br>heißen: heiße, heißt, heißt, heißen, heißt, heißen','Complete: Wir ___ Hunger.',['haben','sind','hat']],
+['Perguntas com W','<b>Wer</b> quem · <b>Was</b> o quê · <b>Wo</b> onde · <b>Woher</b> de onde · <b>Wohin</b> para onde · <b>Wie</b> como · <b>Wann</b> quando · <b>Warum</b> por quê.','Qual pergunta indica direção (para onde)?',['Wohin gehst du?','Woher kommst du?','Wo wohnst du?']],
+['Números de 0 a 20','0 null · 1 eins · 2 zwei · 3 drei · 4 vier · 5 fünf · 6 sechs · 7 sieben · 8 acht · 9 neun · 10 zehn · 11 elf · 12 zwölf · 13 dreizehn · 16 sechzehn · 17 siebzehn · 20 zwanzig.','Como se escreve 17?',['siebzehn','sieben','siebenzehn']],
+['Maiúsculas nos substantivos','Todo <b>substantivo</b> começa com maiúscula, inclusive coisas: <b>der Tisch</b>, <b>die Freude</b>, <b>das Auto</b>. Verbos e adjetivos ficam em minúscula.','Qual está escrita corretamente?',['Ich habe ein Auto.','ich habe ein auto.','Ich habe ein auto.'],'Módulo 2 · Substantivos e artigos'],
+['Artigos definidos','<b>der</b> masc. · <b>die</b> fem. · <b>das</b> neutro · <b>die</b> plural.<br>der Mann, die Frau, das Kind, die Kinder.','Qual é o artigo de “Kinder” (plural)?',['die','das','der']],
+['Artigos indefinidos','<b>ein</b> masc. · <b>eine</b> fem. · <b>ein</b> neutro. Não existe no plural.<br>ein Mann, eine Frau, ein Kind; plural: Kinder (sem artigo).','Complete: Das ist ___ Lampe.',['eine','ein','einen']],
+['Plural dos substantivos','<b>-e</b> (Tag → Tage) · <b>-er</b> (Kind → Kinder) · <b>-(e)n</b> (Frau → Frauen) · <b>-s</b> (Auto → Autos) · com trema (Mutter → Mütter).','Qual o plural de “Frau”?',['Frauen','Fraus','Fräue']],
+['Palavras compostas','Junte palavras; o gênero é o da <b>última</b>.<br>der Tisch + die Lampe = <b>die Tischlampe</b>.','Qual artigo? ___ Haustür (Haus + Tür)',['die','der','das']],
+['Conjugação regular','Radical + <b>-e, -st, -t, -en, -t, -en</b>.<br>machen: ich mache, du machst, er macht, wir machen, ihr macht, sie machen.','Complete: Du ___ in Berlin. (wohnen)',['wohnst','wohnt','wohne'],'Módulo 2 · Verbos no presente'],
+['Mudança de vogal','Só em du e er/sie/es.<br><b>e → i/ie</b>: sprechen (sprichst), lesen (liest), sehen (siehst), essen (isst).<br><b>a → ä</b>: fahren (fährst), schlafen (schläfst), laufen (läufst).','Complete: Er ___ ein Buch. (lesen)',['liest','lest','lesst']],
+['Verbos modais','<b>können</b> poder · <b>müssen</b> ter que · <b>wollen</b> querer · <b>dürfen</b> ter permissão · <b>sollen</b> dever · <b>möchten</b> gostaria.<br>Modal na 2ª posição, verbo principal no infinitivo no <b>fim</b>.','Qual frase está correta?',['Ich kann gut Deutsch sprechen.','Ich kann sprechen gut Deutsch.','Ich sprechen kann gut Deutsch.']],
+['Verbos separáveis','Prefixos an-, auf-, aus-, ein-, mit-, fern- vão ao <b>fim</b>.<br>einkaufen → Ich kaufe im Supermarkt <b>ein</b>.','Qual frase está correta?',['Ich kaufe im Supermarkt ein.','Ich einkaufe im Supermarkt.','Ich kaufe ein im Supermarkt.']],
+['Frase afirmativa','O verbo conjugado fica <b>sempre na 2ª posição</b>.<br>Ich gehe heute ins Kino. / <b>Heute gehe</b> ich ins Kino.','Qual frase está correta?',['Heute gehe ich ins Kino.','Heute ich gehe ins Kino.','Ich heute gehe ins Kino.'],'Módulo 2 · Estrutura da frase'],
+['Pergunta com W-Wort','W-Wort (1ª) + verbo (2ª) + sujeito.<br>Wo wohnst du? · Was machst du? · Wann kommt er?','Qual está correta?',['Wo wohnst du?','Wo du wohnst?','Wohnst wo du?']],
+['Pergunta de sim ou não','O verbo conjugado abre a frase.<br>Kommst du heute? — Ja, ich komme. / Nein, ich komme nicht.','Qual é uma pergunta de sim/não?',['Kommst du heute?','Wann kommst du?','Du kommst heute.']],
+['Imperativo','du: <b>Komm!</b> · ihr: <b>Kommt!</b> · Sie: <b>Kommen Sie!</b> (verbo na 1ª posição). Com bitte: Komm bitte!<br>Com e → i: <b>Sprich!</b>','Como dizer “Venha, por favor!” ao senhor?',['Kommen Sie bitte!','Komm Sie bitte!','Kommt Sie bitte!']],
+['Nominativo','Caso do <b>sujeito</b> (quem faz a ação). Responde a Wer/Was?<br><b>Der Mann</b> liest. · <b>Die Frau</b> schläft.','Qual é o sujeito? “Das Kind spielt.”',['Das Kind','spielt','Nenhum'],'Módulo 2 · Casos'],
+['Acusativo','Objeto direto. Só o <b>masculino</b> muda: der → <b>den</b>, ein → <b>einen</b>, kein → <b>keinen</b>, mein → <b>meinen</b>. Feminino, neutro e plural não mudam.','Complete: Ich habe ___ Bruder.',['einen','ein','eine']],
+['Dativo em expressões fixas','No A1 só em expressões: <b>Wie geht es dir?</b> · <b>Mir geht es gut.</b> · <b>mit dem Bus</b> · <b>nach Hause</b> · <b>zum</b> Arzt.','Como responder “Wie geht es dir?”',['Mir geht es gut.','Ich geht gut.','Mich geht es gut.']],
+['Negação com kein','<b>kein/keine</b> nega substantivos sem artigo ou com ein-.<br>Ich habe <b>kein</b> Auto. · Ich habe <b>keine</b> Zeit. (terminações iguais às de ein-).','Complete: Ich habe ___ Hunger.',['keinen','kein','nicht'],'Módulo 2 · Negação e pronomes'],
+['Negação com nicht','<b>nicht</b> nega verbos, adjetivos, advérbios e substantivos com artigo definido ou possessivo.<br>Ich arbeite heute <b>nicht</b>. · Das ist <b>nicht</b> mein Auto.','Qual está correta?',['Ich arbeite heute nicht.','Ich arbeite heute kein.','Ich nicht arbeite heute.']],
+['Pronomes possessivos','<b>mein</b> meu · <b>dein</b> teu · <b>sein</b> dele · <b>ihr</b> dela · <b>unser</b> nosso · <b>euer</b> de vocês · <b>ihr</b> deles · <b>Ihr</b> do senhor. Seguem a declinação de ein-.','Complete: Das ist ___ Mutter. (minha)',['meine','mein','meinen']],
+['Preposições de tempo','<b>um</b> + hora: um 8 Uhr · <b>am</b> + dias e partes do dia: am Montag, am Morgen · <b>im</b> + meses e estações: im Juli, im Sommer.','Complete: ___ Montag habe ich Unterricht.',['Am','Um','Im'],'Módulo 2 · Preposições e passado'],
+['Preposições de lugar e direção','<b>in</b> em/para · <b>an</b> junto a · <b>auf</b> sobre · <b>aus</b> de (origem) · <b>nach</b> para (cidade/país) · <b>zu</b> para (pessoa/lugar) · <b>bei</b> na casa de · <b>mit</b> com · <b>von</b> de.','Complete: Ich fahre ___ Berlin.',['nach','zu','aus']],
+['Passado: Perfekt','<b>haben/sein</b> (2ª posição) + <b>particípio II</b> (fim): ge-…-t / ge-…-en.<br>Ich habe Pizza gegessen. · Ich bin nach Berlin gefahren. Movimento → sein.','Complete: Ich ___ nach Rom geflogen.',['bin','habe','war']],
+['Präteritum de sein e haben','sein: ich <b>war</b>, du warst, er war, wir waren…<br>haben: ich <b>hatte</b>, du hattest, er hatte, wir hatten…','Complete: Gestern ___ ich müde.',['war','hatte','bin']],
+['Números grandes, datas e horas','21 einundzwanzig · 30 dreißig · 100 hundert · 1.000 tausend. Preço: Euro, Cent. Hora oficial: 14:30 = vierzehn Uhr dreißig. Informal: <b>halb drei</b> = 2h30 · <b>Viertel nach/vor</b>. Data: am ersten Mai.','Que horas são? “halb drei”',['2h30','3h30','2h15'],'Módulo 3 · Vocabulário temático'],
+['Família e pessoas','<b>Eltern</b> pais · <b>Geschwister</b> irmãos · <b>Kinder</b> filhos · <b>Großeltern</b> avós · <b>ledig</b> solteiro · <b>verheiratet</b> casado · <b>geschieden</b> divorciado.','O que significa “Geschwister”?',['Irmãos','Avós','Primos']],
+['Profissões e trabalho','<b>der Lehrer / die Lehrerin</b>, der Arzt / die Ärztin, der Koch / die Köchin. Local: das Büro, die Firma. Pergunta: <b>Was bist du von Beruf?</b>','Qual é o feminino de “Lehrer”?',['Lehrerin','Lehrer','Lehrere']],
+['Comida, bebida e restaurante','der Apfel, das Brot, das Fleisch, das Wasser. Embalagens: <b>eine Flasche</b>, <b>eine Packung</b>. No restaurante: <b>Ich möchte…</b> · <b>Die Rechnung, bitte.</b>','Como pedir a conta?',['Die Rechnung, bitte.','Das Essen, bitte.','Ich bin die Rechnung.']],
+['Casa e moradia','das Haus, die Wohnung · die Küche, das Bad, das Schlafzimmer, das Wohnzimmer · der Tisch, das Bett · die <b>Miete</b> (aluguel), die <b>Nebenkosten</b> (despesas extras).','Onde se dorme?',['Das Schlafzimmer','Die Küche','Das Bad']],
+['Rotina e tempo livre','aufstehen, frühstücken, arbeiten, fernsehen, schlafen gehen. Hobbys: Musik hören, Fußball spielen, ins Kino gehen. Encontros: <b>Hast du Zeit?</b> · <b>Wollen wir…?</b>','Qual verbo é separável?',['aufstehen','frühstücken','arbeiten']],
+['Cidade, orientação e transporte','der Bahnhof, der Supermarkt, die Apotheke, die Bank, die Post. <b>links</b>, <b>rechts</b>, <b>geradeaus</b>. Der Zug, der Bus, die U-Bahn, das Flugzeug, das Auto. <b>Wo ist…?</b>','O que significa “geradeaus”?',['Em frente','À esquerda','À direita']],
+['Roupas e cores','die Hose, das Hemd, das Kleid, die Jacke, die Schuhe. Cores: rot, blau, grün, gelb, schwarz, weiß. Adjetivos: groß, klein, teuer, billig, schön.','Qual cor é “grün”?',['Verde','Azul','Amarelo']],
+['Corpo humano e saúde','der Kopf, der Bauch, der Arm, das Bein, die Hand. <b>Ich habe Kopfschmerzen.</b> · <b>Mein Bauch tut weh.</b> · <b>Ich brauche einen Termin beim Arzt.</b>','Como dizer “Estou com dor de cabeça”?',['Ich habe Kopfschmerzen.','Ich bin Kopfschmerzen.','Ich tue Kopf weh.']],
+['Clima e tempo','<b>Die Sonne scheint.</b> · <b>Es regnet.</b> · <b>Es schneit.</b> · Es ist kalt / warm / windig. Pergunta: <b>Wie ist das Wetter?</b>','O que significa “Es regnet”?',['Está chovendo','Está nevando','Faz sol']],
+['Compreensão auditiva (Hören)','Treine com anúncios de estação, recados de voz e diálogos lentos. Foque em <b>palavras-chave</b>: números, horas, nomes de lugares. Não precisa entender tudo.','O que priorizar ao ouvir um anúncio?',['Números, horas e lugares','Cada palavra','Só os verbos'],'Módulo 4 · Habilidades na prática'],
+['Leitura (Lesen)','Leia placas, cardápios, horários, anúncios de aluguel e e-mails curtos. Procure <b>palavras conhecidas</b>, números e datas antes de traduzir.','Em um anúncio de aluguel, qual palavra indica o preço?',['Miete','Küche','Balkon']],
+['Escrita (Schreiben)','Preencha formulários (Name, Vorname, Adresse, Geburtsdatum) e escreva mensagens de cerca de 30 palavras: <b>Liebe Anna,</b> … <b>Viele Grüße</b>. Convite, desculpa ou pedido de informação.','Qual fecho é informal?',['Viele Grüße','Mit freundlichen Grüßen','Sehr geehrte Damen']],
+['Fala (Sprechen)','Apresente-se, soletre seu nome, diga seu telefone e faça pedidos educados: <b>Können Sie mir bitte helfen?</b> · <b>Wie bitte?</b> · <b>Noch einmal, bitte.</b>','Como pedir para repetir?',['Noch einmal, bitte.','Auf Wiedersehen.','Guten Tag.']]
+];
+D[0][2]=N.map(function(e){var o=shuf(e[3].slice());return[e[0],'',e[2],o,o.indexOf(e[3][0]),e[4]||'']});
+T[0]=N.map(function(e){return e[1]});
+if(!done.v2){Object.keys(done).forEach(function(k){if(k.indexOf('0-')===0||k==='s0')delete done[k]});done.v2=1;save()}
+function bx(a){if(a[0]==='m'){var o=shuf(a[2].slice());return{k:'m',q:a[1],o:o,a:o.indexOf(a[2][0]),n:a[3]||''}}return{k:'t',q:a[1],a:a[2].split('|'),n:a[3]||''}}
+var M=[
+['<h4>Cumprimentos</h4>'+tb(['Hallo|oi|informal, a qualquer hora','Guten Morgen|bom dia|de manhã (até uns 11h)','Guten Tag|bom dia / boa tarde|durante o dia, formal ou não','Guten Abend|boa noite|ao chegar, à noite','Gute Nacht|boa noite|só ao se despedir para dormir'])+'<p>Regionais e informais: <b>Moin</b> (norte), <b>Servus</b> (sul).</p><h4>Despedidas</h4>'+tb(['Auf Wiedersehen|adeus|formal','Tschüss|tchau|informal','Bis bald|até logo','Bis morgen|até amanhã','Bis später|até mais tarde'])+'<h4>Como vai?</h4><p><b>Wie geht’s?</b> (informal) · <b>Wie geht es Ihnen?</b> (formal).<br>Respostas: <b>Gut, danke. Und dir?</b> (bem) · <b>Es geht.</b> (mais ou menos) · <b>Nicht so gut.</b> (mal).</p><p>Também útil: <b>Danke</b> (obrigado) · <b>Bitte</b> (por favor / de nada) · <b>Entschuldigung</b> (desculpe).</p>',[
+['m','Como se diz “boa noite” ao ir dormir?',['Gute Nacht','Guten Abend','Guten Morgen'],'Guten Abend é para cumprimentar à noite.'],
+['m','Qual cumprimento usar às 9h da manhã?',['Guten Morgen','Gute Nacht','Guten Abend']],
+['m','Qual despedida é formal?',['Auf Wiedersehen','Tschüss','Hallo']],
+['t','Traduza (informal): “tchau”','Tschüss'],
+['t','Traduza: “obrigado”','Danke'],
+['t','Complete: Guten ___! (boa noite, ao chegar)','Abend'],
+['m','Como perguntar “Como vai?” de modo informal?',['Wie geht’s?','Wie heißt du?','Wo wohnst du?']],
+['t','Complete a resposta: Gut, ___. (obrigado)','danke'],
+['m','“Bis morgen” significa:',['Até amanhã','Até logo','Bom dia']],
+['t','Complete (formal): Auf ___!','Wiedersehen']]],
+['<h4>Dizer quem você é</h4>'+tb(['Nome|Ich heiße Ana. / Ich bin Ana.|Wie heißt du?','Origem|Ich komme aus Brasilien.|Woher kommst du?','Residência|Ich wohne in Vitória.|Wo wohnst du?','Idade|Ich bin 25 Jahre alt.|Wie alt bist du?','Profissão|Ich bin Lehrerin.|Was bist du von Beruf?'])+'<p>Formal: <b>Wie heißen Sie? Woher kommen Sie? Wo wohnen Sie?</b></p><h4>Países, cidades e idiomas</h4><p><b>aus</b> + país: aus Brasilien, aus Deutschland, aus Portugal, aus Italien.<br><b>in</b> + cidade: in Berlin, in Vitória.<br>Idiomas: <b>Ich spreche Portugiesisch und ein bisschen Deutsch.</b></p><p>Atenção: a idade usa <b>sein</b>, não haben. Diga <i>Ich bin 25 Jahre alt</i>, nunca “Ich habe 25 Jahre”. Para devolver a pergunta, use <b>Und du?</b></p>',[
+['m','Como dizer “Eu moro em Vitória”?',['Ich wohne in Vitória.','Ich komme in Vitória.','Ich bin wohne Vitória.']],
+['t','Complete: Ich ___ aus Brasilien.','komme'],
+['t','Complete: Ich ___ Maria. (chamar-se)','heiße'],
+['m','Qual pergunta significa “De onde você vem?”',['Woher kommst du?','Wohin gehst du?','Wo wohnst du?']],
+['t','Traduza: “Tenho 30 anos.”','Ich bin 30 Jahre alt|Ich bin dreißig Jahre alt'],
+['m','Qual é a forma formal de “Wie heißt du?”',['Wie heißen Sie?','Wie heißt ihr?','Wie heiße ich?']],
+['t','Complete: Wie ___ bist du?','alt'],
+['t','Complete: Ich ___ in Berlin. (morar)','wohne'],
+['m','Qual frase está correta?',['Ich bin 20 Jahre alt.','Ich habe 20 Jahre alt.','Ich bin 20 Jahre.'],'A idade usa sein.'],
+['t','Traduza: “Falo um pouco de alemão.”','Ich spreche ein bisschen Deutsch|Ich spreche ein wenig Deutsch']]],
+['<h4>Alfabeto</h4><p>A (á) · B (bê) · C (tsê) · D (dê) · E (ê) · F (éf) · G (guê) · H (rá) · I (i) · J (iót) · K (cá) · L (él) · M (ém) · N (én) · O (ô) · P (pê) · Q (cu) · R (ér) · S (és) · T (tê) · U (u) · V (fau) · W (vê) · X (iks) · Y (ípsilon) · Z (tsét)</p><h4>Letras especiais</h4>'+tb(['ä|som de “é”|Mädchen','ö|entre “ê” e “é”, com lábios arredondados|schön','ü|“i” com lábios arredondados|über','ß|“ss”|heißen, Straße'])+'<h4>Combinações e sons</h4>'+tb(['ei|“ai”|mein','ie|“i” longo|Liebe','eu / äu|“ói”|heute, Häuser','sch|“x”|Schule','ch|suave após e/i, áspero após a/o/u|ich, Buch','sp / st no início|“schp” / “scht”|sprechen, Stein','v|“f”|Vater','w|“v”|Wasser','z|“ts”|Zeit','s antes de vogal|“z”|Sonne'])+'<p>Atenção: <b>ei</b> soa “ai” e <b>ie</b> soa “i”. Para soletrar seu nome, diga as letras uma a uma: Ana = A–N–A.</p>',[
+['m','“ei” em “mein” soa como:',['“ai”','“i” longo','“ê”']],
+['m','“ie” em “Liebe” soa como:',['“i” longo','“ai”','“ié”']],
+['m','A letra “w” em “Wasser” soa como:',['“v”','“u”','“f”']],
+['m','A letra “v” em “Vater” soa como:',['“f”','“v”','“b”']],
+['m','“sch” em “Schule” soa como:',['“x”','“s”','“tch”']],
+['m','“z” em “Zeit” soa como:',['“ts”','“z”','“s”']],
+['t','Escreva “schön” trocando o ö por “oe”:','schoen'],
+['m','Qual palavra tem som de “ói”?',['heute','mein','Liebe']],
+['t','Complete com ei ou ie: L___be (amor)','ie'],
+['t','Complete com ei ou ie: m___n (meu)','ei'],
+['m','“eu” e “äu” soam como:',['“ói”','“ai”','“iu”']]]],
+['<h4>Os pronomes</h4>'+tb(['ich|eu','du|tu (informal)','er|ele','sie|ela','es|neutro / coisa','wir|nós','ihr|vocês (informal)','sie|eles / elas','Sie|o senhor, a senhora, vocês (formal)'])+'<h4>du ou Sie?</h4><p><b>du</b>: amigos, família, crianças.<br><b>Sie</b>: desconhecidos, trabalho, pessoas mais velhas. Sempre com maiúscula e verbo no plural: <i>Sie heißen</i>.</p><h4>er, sie, es</h4><p>Concordam com o gênero do substantivo: der Tisch → <b>er</b> · die Lampe → <b>sie</b> · das Buch → <b>es</b>.<br>Wo ist der Tisch? <b>Er</b> ist dort.</p><p>Atenção: <b>sie</b> pode ser “ela” ou “eles”. O verbo diferencia: <i>sie ist</i> (ela) · <i>sie sind</i> (eles).</p>',[
+['m','Pronome para “nós”:',['wir','ihr','sie']],
+['m','Qual pronome é formal?',['Sie','du','ihr']],
+['t','Complete: ___ heiße Anna. (eu)','Ich'],
+['m','Como perguntar o nome ao seu novo professor?',['Wie heißen Sie?','Wie heißt du?','Wie heiße ich?']],
+['m','Qual pronome substitui “die Lampe”?',['sie','er','es']],
+['m','Qual pronome substitui “das Buch”?',['es','er','sie']],
+['t','Qual pronome substitui “der Tisch”?','er'],
+['m','“Sie sind” pode significar:',['Eles são ou o senhor é','Nós somos','Tu és']],
+['t','Traduza o pronome “tu”:','du'],
+['m','Para falar com dois amigos use:',['ihr','Sie','du']],
+['t','Complete: ___ sind aus Brasilien. (nós)','Wir']]],
+['<h4>Conjugação</h4>'+tb(['<b>pronome</b>|<b>sein</b> (ser/estar)|<b>haben</b> (ter)|<b>heißen</b>','ich|bin|habe|heiße','du|bist|hast|heißt','er/sie/es|ist|hat|heißt','wir|sind|haben|heißen','ihr|seid|habt|heißt','sie/Sie|sind|haben|heißen'])+'<h4>Como usar</h4><p><b>sein</b>: Ich bin müde. Er ist Lehrer. Wir sind aus Brasilien.<br><b>haben</b>: Ich habe Hunger. Sie hat zwei Kinder. Wir haben Zeit.<br><b>heißen</b>: Ich heiße Anna. Wie heißt du?</p><p>Atenção: fome, sede e medo usam <b>haben</b>: <i>Ich habe Hunger</i>, <i>Ich habe Durst</i>, <i>Ich habe Angst</i>. Em du heißt, o s não se repete.</p>',[
+['t','Complete: Ich ___ müde. (sein)','bin'],
+['t','Complete: Du ___ einen Bruder. (haben)','hast'],
+['t','Complete: Er ___ Thomas. (heißen)','heißt'],
+['m','Complete: Wir ___ aus Brasilien.',['sind','seid','ist']],
+['m','Complete: Ihr ___ Zeit.',['habt','hat','haben']],
+['t','Complete: Sie (ela) ___ Lehrerin. (sein)','ist'],
+['m','Qual frase está correta?',['Ich habe Hunger.','Ich bin Hunger.','Ich habe bin Hunger.']],
+['t','Complete: Ihr ___ aus Italien. (sein)','seid'],
+['m','Complete: Sie ___ zwei Kinder. (ela)',['hat','haben','habt']],
+['t','Traduza: “Eu tenho sede.”','Ich habe Durst'],
+['m','Complete: Du ___ Maria. (chamar-se)',['heißt','heiße','heißen']]]],
+['<h4>As perguntas com W</h4>'+tb(['Wer|quem|Wer ist das?','Was|o quê|Was ist das?','Wo|onde|Wo wohnst du?','Woher|de onde|Woher kommst du?','Wohin|para onde|Wohin gehst du?','Wie|como|Wie heißt du?','Wann|quando|Wann kommst du?','Warum|por quê|Warum lernst du Deutsch?'])+'<h4>Ordem da frase</h4><p>W-Wort + verbo + sujeito: <b>Wo wohnst du?</b></p><p>Wo = lugar parado · Wohin = movimento, destino · Woher = origem.<br>Outras: <b>Wie alt</b> (que idade) · <b>Wie viel</b> (quanto) · <b>Wie lange</b> (quanto tempo).</p><p>Perguntas de sim ou não não têm W-Wort: o verbo vem primeiro (<i>Kommst du heute?</i>).</p>',[
+['m','“Para onde você vai?”',['Wohin gehst du?','Wo gehst du?','Woher gehst du?']],
+['m','“De onde você vem?”',['Woher kommst du?','Wohin kommst du?','Wo kommst du?']],
+['m','“Quem é essa pessoa?”',['Wer ist das?','Was ist das?','Wie ist das?']],
+['t','Complete: ___ heißt du?','Wie'],
+['t','Complete: ___ wohnst du?','Wo'],
+['t','Complete: ___ kommst du? (quando)','Wann'],
+['m','“Warum” significa:',['Por quê','Quando','Como']],
+['m','Qual é a ordem correta?',['Was machst du?','Was du machst?','Machst was du?']],
+['t','Traduza: “Quantos anos você tem?”','Wie alt bist du'],
+['m','Qual palavra pergunta “o quê”?',['Was','Wer','Wo']],
+['t','Complete: ___ lernst du Deutsch? (por quê)','Warum']]],
+['<h4>De 0 a 20</h4>'+tb(['0|null','1|eins','2|zwei','3|drei','4|vier','5|fünf','6|sechs','7|sieben','8|acht','9|neun','10|zehn','11|elf','12|zwölf','13|dreizehn','14|vierzehn','15|fünfzehn','16|sechzehn','17|siebzehn','18|achtzehn','19|neunzehn','20|zwanzig'])+'<h4>Como funciona</h4><p>De 13 a 19: unidade + <b>zehn</b> (drei + zehn). Duas exceções: <b>sechzehn</b> (perde o s) e <b>siebzehn</b> (perde o en).<br>Ao telefone, zwei costuma virar <b>zwo</b>, para não confundir com drei.</p><p>Uso: <i>Ich bin 20 Jahre alt. Ich habe drei Kinder.</i><br>Atenção: <b>nein</b> (não) não é <b>neun</b> (nove).</p>',[
+['t','Escreva por extenso: 5','fünf'],
+['t','Escreva por extenso: 12','zwölf'],
+['t','Escreva por extenso: 17','siebzehn'],
+['t','Escreva por extenso: 16','sechzehn'],
+['m','Como se diz 9?',['neun','nein','neunzehn']],
+['m','“vierzehn” é:',['14','4','40']],
+['t','Escreva por extenso: 20','zwanzig'],
+['m','Como se diz 11?',['elf','eins','zehn']],
+['t','Escreva por extenso: 8','acht'],
+['m','“dreizehn” é:',['13','3','30']],
+['t','Traduza: “Tenho três filhos.”','Ich habe drei Kinder']]]
+];
+M.forEach(function(m,i){var r=D[0][2][i];r[1]=m[1].length+' exercícios';r[6]=m[1].map(bx);T[0][i]=m[0]});
+/* Módulo 2 do A1: lições completas (teoria + exercícios), índices 7 a 29 */
+var M2a=[
+/* 7 Maiúsculas nos substantivos */
+['<h4>A regra</h4><p>Em alemão, <b>todo substantivo</b> começa com letra maiúscula, em qualquer posição da frase. Isso vale para pessoas, coisas e ideias.</p>'+tb(['der Tisch|a mesa|coisa','die Freude|a alegria|ideia','das Auto|o carro|coisa','die Frau|a mulher|pessoa','der Montag|a segunda-feira|dia da semana'])+'<h4>O que fica em minúscula</h4><p>Verbos, adjetivos, advérbios e preposições: <i>gehen, schön, heute, mit</i>.<br>Exemplo: <b>Ich habe ein schönes Auto.</b> (só Auto leva maiúscula; ich vira maiúsculo apenas no início da frase.)</p><h4>Casos especiais</h4>'+tb(['Sie (formal)|sempre maiúsculo|Wie heißen Sie?','Idiomas|maiúsculo|Ich lerne Deutsch.','Dias e meses|maiúsculo|am Montag, im Juli','Nacionalidade (pessoa)|maiúsculo|der Brasilianer','Adjetivo de origem|minúsculo|brasilianisch, deutsch'])+'<p>Atenção: verbos usados como substantivo também ganham maiúscula: <i>essen</i> (comer) → <b>das Essen</b> (a comida). O pronome <b>ich</b> não leva maiúscula no meio da frase.</p>',[
+['m','Qual frase está escrita corretamente?',['Ich habe ein Auto.','ich habe ein auto.','Ich habe ein auto.']],
+['m','Em “Ich sehe den tisch.”, qual palavra está errada?',['tisch','sehe','den']],
+['m','Qual destas palavras fica sempre em minúscula no meio da frase?',['schön','Freude','Wasser']],
+['m','Qual frase está correta?',['Am Montag habe ich Unterricht.','Am montag habe ich Unterricht.','am Montag habe ich unterricht.']],
+['m','Qual frase usa o pronome formal corretamente?',['Wie heißen Sie?','Wie heißen sie?','wie heißen Sie?']],
+['m','Qual frase está correta?',['Ich lerne Deutsch.','Ich lerne deutsch.','ich lerne Deutsch.']],
+['m','Qual frase está correta?',['Im Juli ist es warm.','Im juli ist es warm.','Im Juli ist es Warm.']],
+['t','Traduza: “o carro”','das Auto'],
+['t','Complete: Ich trinke ___. (água)','Wasser'],
+['t','Traduza: “a alegria”','die Freude']]],
+
+/* 8 Artigos definidos */
+['<h4>Os artigos definidos (nominativo)</h4>'+tb(['<b>masculino</b>|<b>feminino</b>|<b>neutro</b>|<b>plural</b>','der Mann|die Frau|das Kind|die Kinder','der Tisch|die Lampe|das Buch|die Bücher'])+'<p>No plural, todos os gêneros usam <b>die</b>. Aprenda cada substantivo <b>junto com o artigo</b>: não “Tisch”, e sim “der Tisch”.</p><h4>Dicas para adivinhar o gênero</h4>'+tb(['<b>der</b> (masc.)|-er (agente), -ling, -ismus, dias, meses, estações|der Lehrer, der Montag, der Sommer','<b>die</b> (fem.)|-ung, -heit, -keit, -schaft, -tion, -in|die Zeitung, die Freiheit, die Freundin','<b>das</b> (neutro)|-chen, -lein, -um, -ment|das Mädchen, das Museum'])+'<p>Atenção: <b>das Mädchen</b> (a menina) é neutro, porque -chen é sempre neutro. Nem sempre o gênero gramatical coincide com o sexo da pessoa.</p>',[
+['m','Qual é o artigo de “Kinder” (plural)?',['die','das','der']],
+['m','Qual artigo? ___ Frau',['die','der','das']],
+['t','Complete: ___ Mann liest.','Der'],
+['t','Complete: ___ Kind spielt.','Das'],
+['m','Palavras terminadas em -ung são:',['femininas (die)','masculinas (der)','neutras (das)']],
+['m','Qual é o artigo de “Montag”?',['der','die','das']],
+['m','Qual artigo? ___ Mädchen',['das','die','der'],'-chen é sempre neutro.'],
+['t','Complete: ___ Freundin ist nett.','Die'],
+['m','Complete: ___ Freiheit ist wichtig.',['Die','Der','Das']],
+['t','Complete com o artigo: ___ Buch','das']]],
+
+/* 9 Artigos indefinidos */
+['<h4>ein, eine, ein</h4>'+tb(['<b>masculino</b>|<b>feminino</b>|<b>neutro</b>|<b>plural</b>','ein Mann|eine Frau|ein Kind|— (sem artigo)','ein Tisch|eine Lampe|ein Buch|Bücher'])+'<p>O artigo indefinido <b>não tem plural</b>: diga apenas o substantivo no plural (<i>Das sind Kinder.</i>).</p><h4>Definido ou indefinido?</h4><p>Use <b>ein/eine</b> quando algo aparece pela primeira vez. Depois, use <b>der/die/das</b>.<br><b>Da ist ein Hund. Der Hund ist klein.</b> (Lá há um cachorro. O cachorro é pequeno.)</p><h4>Negação</h4><p>A negação <b>kein/keine</b> tem as mesmas terminações: <i>Das ist kein Hund. Das ist keine Katze.</i></p><p>Atenção: <b>eine</b> (feminino) tem -e no fim; <b>ein</b> (masculino e neutro) não.</p>',[
+['m','Complete: Das ist ___ Lampe.',['eine','ein','einen']],
+['t','Complete: Das ist ___ Mann.','ein'],
+['m','Qual é o plural de “ein Kind”?',['Kinder (sem artigo)','Eine Kinder','Einen Kinder']],
+['t','Complete: Das ist ___ Frau.','eine'],
+['m','Complete: Das ist ___ Auto.',['ein','eine','einen']],
+['m','Complete: Da ist ein Hund. ___ Hund ist klein.',['Der','Ein','Die']],
+['t','Traduza: “uma casa”','ein Haus'],
+['m','“eine” é usado com substantivos:',['femininos','masculinos','neutros']],
+['t','Complete: Das ist ___ Buch.','ein'],
+['m','Qual frase está correta? (Schule é feminino)',['Das ist eine Schule.','Das ist ein Schule.','Das ist einen Schule.']]]],
+
+/* 10 Plural dos substantivos */
+['<h4>Os tipos de plural</h4>'+tb(['<b>terminação</b>|<b>singular</b>|<b>plural</b>','-e|der Tag|die Tage','-e + trema|der Stuhl|die Stühle','-er (+ trema)|das Kind, das Haus|die Kinder, die Häuser','-(e)n|die Frau, die Lampe|die Frauen, die Lampen','-s|das Auto, das Handy|die Autos, die Handys','sem mudança|der Lehrer, das Mädchen|die Lehrer, die Mädchen','só trema|der Bruder|die Brüder'])+'<h4>Padrões úteis</h4><p>Femininos terminados em <b>-e</b> quase sempre fazem plural em <b>-n</b>: die Tasche → die Taschen.<br>Femininos em <b>-in</b> fazem <b>-innen</b>: die Lehrerin → die Lehrerinnen.<br>Masculinos em <b>-er</b> ficam iguais.</p><p>Atenção: o plural não é previsível. Aprenda-o junto com o substantivo: <i>das Buch, die Bücher</i>. O artigo no plural é sempre <b>die</b>.</p>',[
+['t','Plural de “die Frau”','Frauen|die Frauen'],
+['m','Plural de “der Tag”:',['Tage','Tags','Täger']],
+['t','Plural de “das Kind”','Kinder|die Kinder'],
+['m','Plural de “das Auto”:',['Autos','Auten','Äuter']],
+['t','Plural de “das Haus”','Häuser|die Häuser'],
+['m','Plural de “die Lehrerin”:',['Lehrerinnen','Lehrerins','Lehreren']],
+['t','Plural de “die Lampe”','Lampen|die Lampen'],
+['m','Plural de “der Bruder”:',['Brüder','Bruders','Bruderen']],
+['m','Qual é o artigo de qualquer plural?',['die','der','das']],
+['t','Plural de “das Buch”','Bücher|die Bücher']]],
+
+/* 11 Palavras compostas */
+['<h4>Como se formam</h4><p>Em alemão, junta-se duas ou mais palavras para criar uma nova. A <b>última palavra</b> define o artigo e o gênero.</p>'+tb(['der Tisch + die Lampe|<b>die</b> Tischlampe|a luminária de mesa','das Haus + die Tür|<b>die</b> Haustür|a porta de casa','kühl + der Schrank|<b>der</b> Kühlschrank|a geladeira','der Zahn + die Bürste|<b>die</b> Zahnbürste|a escova de dentes','die Bahn + der Hof|<b>der</b> Bahnhof|a estação de trem','schlafen + das Zimmer|<b>das</b> Schlafzimmer|o quarto'])+'<h4>Dicas</h4><p>Leia sempre da <b>direita para a esquerda</b>: Handtasche = Tasche (bolsa) + Hand (mão), logo, uma bolsa de mão.<br>Às vezes surge um <b>-s</b> ou <b>-n</b> de ligação: Geburtstag (Geburt + s + Tag), Arbeitszimmer.</p><p>Atenção: o primeiro elemento pode ser verbo ou adjetivo (<i>Wohnzimmer</i> = sala de estar, de wohnen).</p>',[
+['m','Qual artigo? ___ Haustür',['die','der','das']],
+['t','Der Tisch + die Lampe: qual artigo de Tischlampe?','die'],
+['m','Qual artigo? ___ Kühlschrank',['der','die','das']],
+['t','Qual artigo de “Zahnbürste”? ___ Zahnbürste','die'],
+['m','“Handtasche” significa:',['bolsa de mão','luva','mala de roupas']],
+['m','“Bahnhof” significa:',['estação de trem','banco de trem','pátio de casa']],
+['t','Complete: Wohn___ (sala de estar)','zimmer'],
+['m','Qual é o artigo de “Geburtstag” (aniversário)?',['der','die','das']],
+['t','Qual artigo? ___ Schlafzimmer','das'],
+['m','Qual palavra define o gênero de uma palavra composta?',['A última','A primeira','A mais longa']]]],
+
+/* 12 Conjugação regular */
+['<h4>As terminações</h4>'+tb(['<b>pronome</b>|<b>machen</b>|<b>wohnen</b>|<b>arbeiten</b>','ich|mache|wohne|arbeite','du|machst|wohnst|arbeitest','er/sie/es|macht|wohnt|arbeitet','wir|machen|wohnen|arbeiten','ihr|macht|wohnt|arbeitet','sie/Sie|machen|wohnen|arbeiten'])+'<h4>Como funciona</h4><p>Tire o <b>-en</b> do infinitivo para obter o radical e acrescente: -e, -st, -t, -en, -t, -en. Wir e sie/Sie ficam iguais ao infinitivo.</p><p>Atenção a dois casos:<br>• Radical em <b>-t/-d</b> (arbeiten, finden): coloca-se um <b>-e</b> antes de -st e -t: du arbeitest, er arbeitet.<br>• Radical em <b>-s/-ß/-z</b> (heißen, tanzen): em du só entra <b>-t</b>: du heißt, du tanzt.</p><p>Em alemão, um só presente cobre “eu moro” e “eu estou morando”: <i>Ich wohne in Vitória.</i></p>',[
+['t','Complete: Du ___ in Berlin. (wohnen)','wohnst'],
+['m','Complete: Er ___ Deutsch. (lernen)',['lernt','lernst','lerne']],
+['t','Complete: Wir ___ Kaffee. (trinken)','trinken'],
+['m','Complete: Ihr ___ viel. (arbeiten)',['arbeitet','arbeitt','arbeiten']],
+['t','Complete: Ich ___ gern. (kochen)','koche'],
+['m','Complete: Sie ___ in Wien. (eles, wohnen)',['wohnen','wohnt','wohnst']],
+['t','Complete: Du ___ viel. (arbeiten)','arbeitest'],
+['m','Qual é a terminação de “du”?',['-st','-t','-e']],
+['t','Complete: Er ___ Musik. (hören)','hört'],
+['m','Qual frase está correta?',['Wir machen Hausaufgaben.','Wir macht Hausaufgaben.','Wir machst Hausaufgaben.']]]],
+
+/* 13 Mudança de vogal */
+['<h4>Verbos que mudam a vogal</h4><p>Alguns verbos mudam a vogal do radical, <b>só em du e er/sie/es</b>. As outras pessoas seguem a regra normal.</p>'+tb(['<b>mudança</b>|<b>infinitivo</b>|<b>du</b>|<b>er/sie/es</b>','e → i|sprechen|sprichst|spricht','e → i|geben|gibst|gibt','e → i|helfen|hilfst|hilft','e → i|nehmen|nimmst|nimmt','e → ie|lesen|liest|liest','e → ie|sehen|siehst|sieht','a → ä|fahren|fährst|fährt','a → ä|schlafen|schläfst|schläft','au → äu|laufen|läufst|läuft','e → i|essen|isst|isst'])+'<p>Atenção: <b>nehmen</b> também muda a consoante (nimmst, nimmt). Em <b>essen</b>, du isst e er isst, sem repetir o s. Ich, wir, ihr e sie/Sie <b>não mudam</b>: ich spreche, wir sprechen.</p><p>Esses verbos aparecem muito no dia a dia. Decore o infinitivo junto com a forma de du/er.</p>',[
+['m','Complete: Er ___ ein Buch. (lesen)',['liest','lest','lesst']],
+['t','Complete: Du ___ gut Deutsch. (sprechen)','sprichst'],
+['m','Complete: Sie ___ nach Berlin. (fahren, ela)',['fährt','fahrt','fährst']],
+['t','Complete: Er ___ viel. (schlafen)','schläft'],
+['m','Complete: Du ___ das Auto. (sehen)',['siehst','sehst','siehest']],
+['t','Complete: Er ___ mir. (helfen)','hilft'],
+['m','Qual é a forma de “essen” para du?',['isst','esst','ist']],
+['t','Complete: Er ___ Brot. (nehmen)','nimmt'],
+['m','Em qual pessoa a vogal NÃO muda?',['wir','du','er']],
+['t','Complete: Du ___ schnell. (laufen)','läufst|laeufst']]],
+
+/* 14 Verbos modais */
+['<h4>Conjugação</h4>'+tb(['<b>pronome</b>|<b>können</b>|<b>müssen</b>|<b>wollen</b>|<b>dürfen</b>|<b>sollen</b>|<b>möchten</b>','ich|kann|muss|will|darf|soll|möchte','du|kannst|musst|willst|darfst|sollst|möchtest','er/sie/es|kann|muss|will|darf|soll|möchte','wir|können|müssen|wollen|dürfen|sollen|möchten','ihr|könnt|müsst|wollt|dürft|sollt|möchtet','sie/Sie|können|müssen|wollen|dürfen|sollen|möchten'])+'<h4>Significado</h4>'+tb(['können|poder, saber (capacidade)|Ich kann schwimmen.','müssen|ter que|Du musst lernen.','wollen|querer|Wir wollen reisen.','dürfen|ter permissão|Hier darf man parken.','sollen|dever (ordem de outro)|Du sollst kommen.','möchten|gostaria (educado)|Ich möchte einen Kaffee.'])+'<p>Estrutura: o modal fica na <b>2ª posição</b> e o verbo principal vai ao <b>fim</b>, no infinitivo: <i>Ich kann gut Deutsch sprechen.</i><br>Atenção: ich e er/sie/es <b>não têm terminação</b> (ich kann, er kann). <b>nicht dürfen</b> = é proibido.</p>',[
+['m','Complete: Ich ___ Deutsch sprechen.',['kann','kannst','können']],
+['t','Complete: Du ___ Hausaufgaben machen. (müssen)','musst'],
+['m','Complete: Wir ___ ins Kino gehen. (wollen)',['wollen','will','wollt']],
+['t','Complete: Er ___ heute arbeiten. (müssen)','muss'],
+['m','Qual frase está correta?',['Ich kann gut schwimmen.','Ich kann schwimmen gut.','Ich schwimmen kann gut.']],
+['m','“Hier darf man nicht rauchen.” significa:',['É proibido fumar aqui','Não é preciso fumar aqui','Não sei fumar']],
+['t','Complete: Ich ___ einen Kaffee. (möchten)','möchte|moechte'],
+['m','Complete: Ihr ___ pünktlich sein. (sollen)',['sollt','soll','sollen']],
+['t','Complete: Sie ___ Gitarre spielen. (ela, können)','kann'],
+['m','Onde fica o verbo principal na frase com modal?',['No fim, no infinitivo','Na 2ª posição','No início']]]],
+
+/* 15 Verbos separáveis */
+['<h4>Como funcionam</h4><p>Alguns verbos têm um <b>prefixo separável</b>. No presente, o prefixo vai para o <b>fim da frase</b>.</p>'+tb(['aufstehen|levantar-se|Ich stehe um 7 Uhr <b>auf</b>.','einkaufen|fazer compras|Wir kaufen heute <b>ein</b>.','anrufen|telefonar|Er ruft mich <b>an</b>.','abfahren|partir|Der Zug fährt um 8 Uhr <b>ab</b>.','mitkommen|ir junto|Kommst du <b>mit</b>?','fernsehen|assistir TV|Ich sehe abends <b>fern</b>.'])+'<h4>Outras situações</h4>'+tb(['Com modal|infinitivo inteiro no fim|Ich muss früh aufstehen.','Perfekt|ge entre prefixo e verbo|aufgestanden, eingekauft','Imperativo|prefixo no fim|Steh auf!'])+'<p>Prefixos separáveis comuns: <b>an-, auf-, aus-, ein-, mit-, ab-, zu-, vor-, zurück-, fern-</b>.<br>Atenção: <b>be-, ge-, er-, ver-, zer-, ent-</b> são <b>inseparáveis</b>: <i>Ich verstehe dich.</i></p>',[
+['m','Qual frase está correta?',['Ich kaufe im Supermarkt ein.','Ich einkaufe im Supermarkt.','Ich kaufe ein im Supermarkt.']],
+['t','Complete: Ich stehe um 7 Uhr ___. (aufstehen)','auf'],
+['m','Qual verbo NÃO é separável?',['verstehen','aufstehen','anrufen']],
+['t','Complete: Wir rufen dich ___. (anrufen)','an'],
+['m','Qual frase com modal está correta?',['Ich muss früh aufstehen.','Ich muss früh auf stehen.','Ich stehe muss früh auf.']],
+['t','Complete: Der Zug fährt um 8 Uhr ___. (abfahren)','ab'],
+['m','“mitkommen” significa:',['ir junto','vir de volta','partir']],
+['t','Complete: Kommst du ___? (mitkommen)','mit'],
+['m','Imperativo (du) de “aufstehen”:',['Steh auf!','Aufsteh!','Auf steh!']],
+['t','Complete: Ich sehe abends ___. (fernsehen)','fern']]],
+
+/* 16 Frase afirmativa */
+['<h4>A regra de ouro</h4><p>Na frase afirmativa, o <b>verbo conjugado fica na 2ª posição</b>. A 1ª posição pode ser o sujeito, mas também tempo ou lugar. Nesse caso o sujeito vai para depois do verbo (inversão).</p>'+tb(['<b>1ª posição</b>|<b>verbo (2ª)</b>|<b>resto</b>','Ich|gehe|heute ins Kino.','Heute|gehe|ich ins Kino.','Im Sommer|fliegen|wir nach Italien.','Am Montag|arbeite|ich nicht.'])+'<h4>Conectores que não mudam a ordem</h4><p><b>und, aber, oder, denn, sondern</b> ficam fora da contagem: <i>Ich bleibe zu Hause, denn ich bin krank.</i> (o verbo continua na 2ª posição)</p><h4>Ordem dos complementos</h4><p>Em geral: <b>tempo → modo → lugar</b>.<br>Ich fahre <b>morgen</b> <b>mit dem Zug</b> <b>nach Berlin</b>.</p><p>Atenção: em português a ordem é livre; em alemão, o verbo nunca pode sair da 2ª posição.</p>',[
+['m','Qual frase está correta?',['Heute gehe ich ins Kino.','Heute ich gehe ins Kino.','Ich heute gehe ins Kino.']],
+['t','Complete (inversão): Morgen ___ ich nach Berlin. (fahren)','fahre'],
+['m','Qual é a posição do verbo conjugado na frase afirmativa?',['2ª','1ª','Última']],
+['m','Qual frase está correta?',['Am Montag arbeite ich.','Am Montag ich arbeite.','Arbeite am Montag ich.']],
+['m','Qual frase usa inversão?',['Gestern habe ich Pizza gegessen.','Ich habe gestern Pizza gegessen.','Ich esse Pizza.']],
+['t','Complete: Im Sommer ___ wir nach Italien. (fliegen)','fliegen'],
+['m','“denn” altera a ordem da frase?',['Não, o verbo continua na 2ª posição','Sim, o verbo vai ao fim','Sim, o verbo vai ao início']],
+['t','Complete: Heute ___ das Wetter schön. (sein)','ist'],
+['m','Qual frase está correta?',['Wir wohnen in Vitória.','Wir in Vitória wohnen.','In Vitória wir wohnen.']],
+['m','Ordem usual dos complementos:',['tempo → modo → lugar','lugar → modo → tempo','modo → lugar → tempo']]]],
+
+/* 17 Pergunta com W-Wort */
+['<h4>Estrutura</h4><p><b>W-Wort + verbo + sujeito</b>. O verbo conjugado continua na 2ª posição.</p>'+tb(['Wer|quem|Wer ist das?','Was|o quê|Was machst du?','Wo|onde (lugar)|Wo wohnst du?','Woher|de onde (origem)|Woher kommst du?','Wohin|para onde (destino)|Wohin fährst du?','Wann|quando|Wann kommt er?','Warum|por quê|Warum lernst du Deutsch?','Wie|como|Wie heißt du?','Welcher/Welche/Welches|qual|Welches Buch?'])+'<h4>Combinações com Wie</h4>'+tb(['Wie alt|que idade|Wie alt bist du?','Wie viel|quanto|Wie viel kostet das?','Wie viele|quantos|Wie viele Kinder hast du?','Wie lange|quanto tempo|Wie lange wartest du?','Wie oft|com que frequência|Wie oft kommst du?','Wie spät|que horas|Wie spät ist es?'])+'<p>Atenção: <b>wo</b> (parado), <b>wohin</b> (movimento), <b>woher</b> (origem). <b>Welcher</b> concorda com o gênero: welcher Tisch, welche Lampe, welches Buch.</p>',[
+['m','Qual frase está correta?',['Wo wohnst du?','Wo du wohnst?','Wohnst wo du?']],
+['t','Complete: ___ kommst du? (de onde)','Woher'],
+['m','“Wohin fährst du?” significa:',['Para onde você vai?','De onde você vem?','Onde você mora?']],
+['t','Complete: ___ ist das? (quem)','Wer'],
+['m','Como perguntar “Quanto custa?”',['Wie viel kostet das?','Wie lange kostet das?','Wann kostet das?']],
+['t','Complete: Wie ___ ist es? (que horas)','spät'],
+['m','“Wie oft” pergunta sobre:',['frequência','duração','preço']],
+['t','Complete: ___ lernst du Deutsch? (por quê)','Warum'],
+['m','Qual pergunta é sobre duração?',['Wie lange wartest du?','Wie oft wartest du?','Wann wartest du?']],
+['m','“Qual livro?” (das Buch):',['Welches Buch?','Welcher Buch?','Welche Buch?']]]],
+
+/* 18 Pergunta de sim ou não */
+['<h4>Estrutura</h4><p>Sem W-Wort, o <b>verbo conjugado vai para o início</b> da frase. A entonação sobe no fim.</p>'+tb(['Kommst du heute?|Você vem hoje?','Hast du Zeit?|Você tem tempo?','Sprechen Sie Deutsch?|O senhor fala alemão?','Kannst du mir helfen?|Você pode me ajudar?','Ist er aus Brasilien?|Ele é do Brasil?'])+'<h4>Respostas</h4>'+tb(['Ja|sim|Ja, ich komme.','Nein|não|Nein, ich komme nicht.','Doch|sim (contra pergunta negativa)|Hast du keinen Hunger? — Doch!'])+'<p>Atenção: <b>doch</b> serve para dizer “sim” quando a pergunta é negativa: <i>Kommst du nicht? — Doch, ich komme.</i> Em português seria “claro que sim” ou “vou sim”. Nesse caso, evite o “Ja”, que seria ambíguo.</p>',[
+['m','Qual é uma pergunta de sim ou não?',['Kommst du heute?','Wann kommst du?','Du kommst heute.']],
+['t','Complete: ___ du Zeit? (haben)','Hast'],
+['m','Resposta negativa a “Kommst du heute?”',['Nein, ich komme nicht.','Nein, ich komme kein.','Ja, ich komme nicht.']],
+['t','Complete: ___ Sie Deutsch? (sprechen, formal)','Sprechen'],
+['m','“Doch” usa-se:',['para responder sim a uma pergunta negativa','para dizer não','para perguntar o motivo']],
+['m','Qual frase está correta?',['Kannst du mir helfen?','Kannst helfen du mir?','Du helfen kannst mir?']],
+['t','Complete: ___ er aus Brasilien? (sein)','Ist'],
+['m','Se você tem fome, responda a “Hast du keinen Hunger?”',['Doch, ich habe Hunger.','Ja, ich habe keinen Hunger.','Nein, ich habe Hunger.']],
+['t','Complete: ___ ihr heute? (kommen)','Kommt'],
+['m','A entonação em pergunta de sim ou não:',['sobe no fim','desce no fim','não muda']]]],
+];
+var M2b=[
+/* 19 Imperativo */
+['<h4>As três formas</h4>'+tb(['<b>infinitivo</b>|<b>du</b>|<b>ihr</b>|<b>Sie</b>','kommen|Komm!|Kommt!|Kommen Sie!','machen|Mach!|Macht!|Machen Sie!','warten|Warte!|Wartet!|Warten Sie!','sprechen|Sprich!|Sprecht!|Sprechen Sie!','lesen|Lies!|Lest!|Lesen Sie!','nehmen|Nimm!|Nehmt!|Nehmen Sie!','fahren|Fahr!|Fahrt!|Fahren Sie!','sein|Sei!|Seid!|Seien Sie!'])+'<h4>Regras</h4><p>• <b>du</b>: radical do verbo, sem -st e sem du (Mach!). Verbos com e → i/ie mantêm a mudança (Sprich!, Lies!). A mudança a → ä <b>não</b> ocorre (Fahr!).<br>• <b>ihr</b>: igual ao presente, sem ihr (Macht!).<br>• <b>Sie</b>: verbo + Sie (Machen Sie!).<br>• Separáveis: prefixo no fim (Steh auf!).<br>• Educado: acrescente <b>bitte</b>: <i>Komm bitte!</i></p><p>Atenção: radical em -t/-d recebe -e: <i>Warte!, Arbeite!</i>. O verbo <b>sein</b> é irregular: <i>Sei ruhig!</i> (fique calmo).</p>',[
+['m','Como dizer “Venha, por favor!” ao senhor?',['Kommen Sie bitte!','Komm Sie bitte!','Kommt Sie bitte!']],
+['t','Imperativo (du) de “machen”:','Mach'],
+['m','Imperativo (du) de “sprechen”:',['Sprich!','Sprech!','Sprichst!']],
+['t','Imperativo (ihr) de “lernen”:','Lernt'],
+['m','Imperativo (du) de “fahren”:',['Fahr!','Fähr!','Fährst!']],
+['t','Imperativo (du) de “sein”:','Sei'],
+['m','Imperativo (du) de “lesen”:',['Lies!','Les!','Liest!']],
+['t','Imperativo (Sie) de “warten”:','Warten Sie'],
+['m','Qual frase está correta?',['Steh bitte auf!','Auf steh bitte!','Aufsteh bitte!']],
+['t','Imperativo (du) de “nehmen”:','Nimm']]],
+
+/* 20 Nominativo */
+['<h4>O caso do sujeito</h4><p>O <b>nominativo</b> responde a <b>Wer?</b> (quem) ou <b>Was?</b> (o quê). É o caso do sujeito, que faz a ação, e também do que vem após <b>sein, werden</b> e <b>heißen</b>.</p>'+tb(['<b>masculino</b>|<b>feminino</b>|<b>neutro</b>|<b>plural</b>','der Mann|die Frau|das Kind|die Kinder','ein Mann|eine Frau|ein Kind|Kinder','kein Mann|keine Frau|kein Kind|keine Kinder','mein Mann|meine Frau|mein Kind|meine Kinder'])+'<h4>Exemplos</h4><p><b>Der Mann</b> liest. · Wer liest? — Der Mann.<br><b>Die Frau</b> schläft. · Wer schläft? — Die Frau.<br>Das ist <b>ein Tisch</b>. (depois de sein, nominativo)<br>Er ist <b>Lehrer</b>.</p><p>Atenção: no nominativo, os artigos são exatamente os do dicionário. Só no acusativo e no dativo é que o artigo vai mudar.</p>',[
+['m','Qual é o sujeito? “Das Kind spielt.”',['Das Kind','spielt','Nenhum']],
+['t','Complete: ___ Frau schläft.','Die'],
+['m','Complete: ___ Hund bellt. (masculino)',['Der','Den','Dem']],
+['m','Complete: Das ist ___ Tisch.',['ein','einen','einem']],
+['t','Complete: Wer liest? Der ___. (homem)','Mann'],
+['m','A pergunta pelo sujeito é:',['Wer oder was?','Wen oder was?','Wem?']],
+['t','Complete: ___ Kinder spielen.','Die'],
+['m','Depois de “sein”, o caso é:',['nominativo','acusativo','dativo']],
+['m','Qual frase tem o sujeito masculino correto?',['Der Mann kocht.','Den Mann kocht.','Dem Mann kocht.']],
+['t','Complete: Das ist ___ Lampe.','eine']]],
+
+/* 21 Acusativo */
+['<h4>O objeto direto</h4><p>O <b>acusativo</b> responde a <b>Wen?</b> (quem) ou <b>Was?</b> (o quê). Só o <b>masculino</b> muda: der → <b>den</b>, ein → <b>einen</b>, kein → <b>keinen</b>, mein → <b>meinen</b>.</p>'+tb(['<b>caso</b>|<b>masculino</b>|<b>feminino</b>|<b>neutro</b>|<b>plural</b>','nominativo|der / ein|die / eine|das / ein|die','acusativo|<b>den</b> / <b>einen</b>|die / eine|das / ein|die'])+'<p>Ich sehe <b>den</b> Mann. · Ich kaufe <b>einen</b> Tisch. · Ich habe <b>keinen</b> Hunger. · Ich sehe die Frau, das Kind.</p><h4>Pronomes no acusativo</h4>'+tb(['ich → <b>mich</b>|du → <b>dich</b>|er → <b>ihn</b>|sie → <b>sie</b>','es → <b>es</b>|wir → <b>uns</b>|ihr → <b>euch</b>|sie/Sie → <b>sie/Sie</b>'])+'<h4>Preposições com acusativo</h4><p><b>für</b> (para), <b>durch</b> (através), <b>gegen</b> (contra), <b>ohne</b> (sem), <b>um</b> (em torno de): <i>Das Geschenk ist für dich.</i></p>',[
+['m','Complete: Ich habe ___ Bruder.',['einen','ein','eine']],
+['t','Complete: Ich sehe ___ Mann.','den'],
+['m','Complete: Ich kaufe ___ Brot.',['das','den','dem']],
+['m','Qual é o acusativo de “eine Frau”?',['eine Frau','einen Frau','einer Frau']],
+['t','Complete: Er hat ___ Hund. (ein)','einen'],
+['m','Pronome acusativo de “er”:',['ihn','ihm','er']],
+['t','Complete: Ich liebe ___. (você, du)','dich'],
+['m','Qual preposição exige acusativo?',['für','mit','bei']],
+['t','Complete: Das Geschenk ist ___ dich.','für'],
+['m','Complete: Ich brauche ___ Computer.',['einen','ein','einem']]]],
+
+/* 22 Dativo em expressões fixas */
+['<h4>O dativo no A1</h4><p>O <b>dativo</b> responde a <b>Wem?</b> (a quem). No A1, ele aparece sobretudo em expressões fixas e depois de certas preposições.</p>'+tb(['<b>caso</b>|<b>masculino</b>|<b>feminino</b>|<b>neutro</b>|<b>plural</b>','nominativo|der|die|das|die','dativo|<b>dem</b>|<b>der</b>|<b>dem</b>|<b>den</b> (+n)'])+'<h4>Expressões úteis</h4>'+tb(['Wie geht es <b>dir</b>?|Como você está?','<b>Mir</b> geht es gut.|Estou bem.','<b>Mir</b> ist kalt / warm.|Estou com frio / calor.','Das gefällt <b>mir</b>.|Eu gosto disso.','Kannst du <b>mir</b> helfen?|Você pode me ajudar?'])+'<h4>Preposições com dativo</h4><p><b>mit</b> (com), <b>nach</b> (para / depois), <b>bei</b> (na casa de), <b>von</b> (de), <b>zu</b> (para), <b>aus</b> (de), <b>seit</b> (desde): <i>mit dem Bus, bei der Arbeit.</i><br>Contrações: <b>zu dem = zum</b>, <b>zu der = zur</b>, <b>bei dem = beim</b>, <b>von dem = vom</b>.</p>',[
+['m','Como responder “Wie geht es dir?”',['Mir geht es gut.','Ich geht gut.','Mich geht es gut.']],
+['t','Complete: Ich fahre ___ dem Bus. (com)','mit'],
+['m','Complete: Ich gehe ___ Hause.',['nach','zu','in']],
+['t','Complete: Ich gehe ___ Arzt. (zu + dem)','zum'],
+['m','Qual preposição exige dativo?',['mit','für','ohne']],
+['m','“zur Schule” = zu +',['der','dem','den']],
+['t','Complete: Wie geht es ___? (você, du)','dir'],
+['m','“Mir ist kalt” significa:',['Estou com frio','Estou com fome','Estou com calor']],
+['t','Complete: Ich komme ___ Brasilien. (de, origem)','aus'],
+['m','O verbo “helfen” rege o caso:',['dativo','acusativo','genitivo']]]],
+
+/* 23 Negação com kein */
+['<h4>kein / keine</h4><p><b>kein</b> nega substantivos <b>sem artigo</b> ou com <b>ein-</b>. As terminações são as de ein-:</p>'+tb(['<b>caso</b>|<b>masculino</b>|<b>feminino</b>|<b>neutro</b>|<b>plural</b>','nominativo|kein|keine|kein|keine','acusativo|<b>keinen</b>|keine|kein|keine'])+'<p>Das ist <b>kein</b> Auto. (nominativo)<br>Ich habe <b>keinen</b> Bruder. (acusativo masculino)<br>Ich habe <b>keine</b> Zeit. · Wir haben <b>keine</b> Kinder. · Ich habe <b>kein</b> Geld.</p><h4>Ein → kein</h4><p>Ich habe ein Auto. → Ich habe <b>kein</b> Auto.<br>Ich habe Hunger. → Ich habe <b>keinen</b> Hunger.</p><p>Atenção: não se diz “nicht Geld”. Substantivos sem artigo e com ein- usam <b>kein</b>. Já com artigo definido ou possessivo, use <b>nicht</b> (próxima lição).</p>',[
+['m','Complete: Ich habe ___ Hunger.',['keinen','kein','nicht']],
+['t','Complete: Ich habe ___ Zeit.','keine'],
+['m','Complete: Das ist ___ Auto.',['kein','keine','keinen']],
+['t','Complete: Er hat ___ Bruder. (acusativo)','keinen'],
+['m','Qual frase está correta?',['Ich habe kein Geld.','Ich habe nicht Geld.','Ich habe keine Geld.']],
+['m','Complete: Wir haben ___ Kinder.',['keine','kein','keinen']],
+['t','Complete: Das ist ___ Lampe.','keine'],
+['m','“kein” nega:',['substantivos sem artigo ou com ein-','verbos','adjetivos']],
+['t','Traduza: “Não tenho carro.”','Ich habe kein Auto'],
+['m','Complete: Sie hat ___ Schwester.',['keine','kein','keinen']]]],
+
+/* 24 Negação com nicht */
+['<h4>Quando usar nicht</h4><p><b>nicht</b> nega verbos, adjetivos, advérbios, e substantivos com artigo definido ou possessivo.</p>'+tb(['Verbo|Ich arbeite heute <b>nicht</b>.|no fim da frase','Adjetivo|Der Film ist <b>nicht</b> gut.|antes do adjetivo','Artigo definido|Das ist <b>nicht</b> der Lehrer.|antes do artigo','Possessivo|Das ist <b>nicht</b> mein Auto.|antes do possessivo','Lugar|Ich komme <b>nicht</b> aus Deutschland.|antes da preposição'])+'<h4>Posição</h4><p>Se nega a frase inteira, <b>nicht</b> vem no <b>fim</b>: <i>Ich kenne ihn nicht.</i><br>Se nega uma só parte, vem <b>antes</b> dela: <i>Ich fahre nicht nach Berlin</i> (mas a Hamburgo).</p><h4>nicht ou kein?</h4>'+tb(['ein Auto / sem artigo|<b>kein</b>|Ich habe kein Auto.','das / mein / verbo / adjetivo|<b>nicht</b>|Das ist nicht mein Auto.'])+'<p>Atenção: com modais e Perfekt, o nicht vem antes do infinitivo ou do particípio: <i>Ich kann nicht kommen. Ich habe nicht geschlafen.</i></p>',[
+['m','Qual frase está correta?',['Ich arbeite heute nicht.','Ich arbeite heute kein.','Ich nicht arbeite heute.']],
+['t','Complete: Das ist ___ mein Auto.','nicht'],
+['m','Complete: Der Film ist ___ gut.',['nicht','kein','keine']],
+['t','Traduza: “Não trabalho hoje.”','Ich arbeite heute nicht'],
+['m','Quando nega o verbo, “nicht” vem:',['no fim da frase','no começo da frase','sempre antes do sujeito']],
+['m','Qual frase está correta?',['Ich komme nicht aus Deutschland.','Ich komme kein aus Deutschland.','Ich nicht komme aus Deutschland.']],
+['t','Complete: Wir gehen heute ___ ins Kino.','nicht'],
+['m','Complete: Ich habe ___ Auto. (qualquer)',['kein','nicht','keine']],
+['m','Complete: Das ist ___ meine Tasche.',['nicht','kein','keine']],
+['t','Traduza: “Ele não é meu irmão.”','Er ist nicht mein Bruder']]],
+
+/* 25 Pronomes possessivos */
+['<h4>Os possessivos</h4>'+tb(['<b>pronome</b>|<b>possessivo</b>|<b>significado</b>','ich|mein|meu','du|dein|teu','er / es|sein|dele','sie|ihr|dela','wir|unser|nosso','ihr|euer|de vocês','sie (eles)|ihr|deles','Sie|Ihr|do senhor'])+'<h4>Terminações (como ein-)</h4>'+tb(['<b>caso</b>|<b>masculino</b>|<b>feminino</b>|<b>neutro</b>|<b>plural</b>','nominativo|mein|meine|mein|meine','acusativo|<b>meinen</b>|meine|mein|meine'])+'<p>O possessivo <b>concorda com o possuidor</b> (quem tem), e a <b>terminação concorda com o possuído</b> (a coisa).<br>Das ist <b>meine</b> Mutter. · Ich sehe <b>meinen</b> Vater. · Er liebt <b>seine</b> Frau. · Sie liebt <b>ihren</b> Mann.</p><p>Atenção: <b>euer</b> perde um e antes da terminação: <i>eure Kinder, euren Hund</i>. <b>unser</b> mantém o r: <i>unser Auto, unsere Kinder</i>.</p>',[
+['t','Complete: Das ist ___ Mutter. (minha)','meine'],
+['m','Complete: Ich liebe ___ Familie. (minha)',['meine','mein','meinen']],
+['m','Complete: Das ist ___ Buch. (dela)',['ihr','sein','Ihr']],
+['t','Complete: Er hat ___ Hund. (dele, acusativo)','seinen'],
+['m','Forma de “euer” com Kinder:',['eure','euer','euren']],
+['t','Complete: ___ Name ist Anna. (teu)','Dein'],
+['m','“Ihr” com maiúscula (no meio da frase) significa:',['do senhor / da senhora','dela','deles']],
+['m','Complete: Das ist ___ Auto. (nosso)',['unser','unsere','unseren']],
+['t','Complete: Wo ist ___ Tasche? (minha)','meine'],
+['m','Complete: Wir besuchen ___ Eltern. (nossos)',['unsere','unser','unseren']]]],
+
+/* 26 Preposições de tempo */
+['<h4>um, am, im</h4>'+tb(['<b>um</b>|hora exata|um 8 Uhr, um halb drei','<b>am</b>|dias, partes do dia, datas|am Montag, am Morgen, am Wochenende, am 5. Mai','<b>im</b>|meses, estações, ano|im Juli, im Sommer, im Jahr 2026','<b>in der</b>|noite|in der Nacht','<b>um</b>|meia-noite|um Mitternacht'])+'<h4>Outras preposições de tempo</h4>'+tb(['seit + dativo|desde|Ich lerne seit drei Jahren Deutsch.','vor + dativo|antes / há|vor einem Jahr','nach + dativo|depois de|nach dem Essen','von … bis|de … até|von 9 bis 17 Uhr','ab + dativo|a partir de|ab Montag','in + dativo|daqui a|in einer Woche'])+'<p>Atenção: <b>am</b> é a contração de <b>an dem</b>, e <b>im</b> de <b>in dem</b>. Datas completas: <i>am ersten Mai</i> (1º de maio).</p>',[
+['m','Complete: ___ Montag habe ich Unterricht.',['Am','Um','Im']],
+['t','Complete: ___ 8 Uhr stehe ich auf.','Um'],
+['m','Complete: ___ Juli ist es warm.',['Im','Am','Um']],
+['t','Complete: Wir fahren ___ Sommer.','im'],
+['m','“am Wochenende” significa:',['no fim de semana','na semana','hoje']],
+['m','Complete: Das Konzert ist ___ 5. Mai.',['am','im','um']],
+['t','Complete: ___ Morgen trinke ich Kaffee.','Am'],
+['m','“seit” indica:',['desde','daqui a','antes']],
+['m','Complete: ___ Nacht schlafe ich.',['In der','Am','Um']],
+['t','Complete: Ich lerne ___ drei Jahren Deutsch. (desde)','seit']]],
+
+/* 27 Preposições de lugar e direção */
+['<h4>As mais usadas</h4>'+tb(['<b>aus</b>|de (origem)|Ich komme aus Brasilien.','<b>nach</b>|para (cidade/país sem artigo)|Ich fahre nach Berlin.','<b>in</b>|em / para dentro|Ich wohne in der Stadt.','<b>zu</b>|para (pessoa ou lugar)|Ich gehe zum Arzt.','<b>bei</b>|na casa de / na empresa|Er arbeitet bei Siemens.','<b>an</b>|junto a|Das Bild hängt an der Wand.','<b>auf</b>|sobre|Das Buch liegt auf dem Tisch.','<b>mit</b>|com / de (transporte)|mit dem Zug','<b>von</b>|de (partindo)|vom Bahnhof'])+'<h4>Casa</h4>'+tb(['<b>zu</b> Hause|em casa (lugar)|Ich bin zu Hause.','<b>nach</b> Hause|para casa (direção)|Ich gehe nach Hause.'])+'<h4>Wo? Wohin? Woher?</h4><p>Wo (parado): <i>in Berlin</i>. Wohin (destino): <i>nach Berlin, zum Arzt</i>. Woher (origem): <i>aus Berlin, von der Arbeit</i>.</p><p>Atenção: <b>aus, mit, bei, von, zu, nach</b> exigem <b>dativo</b>. Com <b>in, an, auf</b> o dativo indica lugar parado.</p>',[
+['m','Complete: Ich fahre ___ Berlin.',['nach','zu','aus']],
+['t','Complete: Ich komme ___ Brasilien.','aus'],
+['m','Complete: Ich gehe ___ Arzt.',['zum','nach','aus']],
+['t','Complete: Ich bin ___ Hause.','zu'],
+['m','Complete: Ich gehe ___ Hause.',['nach','zu','in']],
+['m','Complete: Er arbeitet ___ Siemens. (na empresa)',['bei','nach','zu']],
+['m','“mit dem Zug” significa:',['de trem','para o trem','do trem']],
+['t','Complete: Das Buch liegt ___ dem Tisch. (sobre)','auf'],
+['m','Complete: Wir wohnen ___ der Stadt.',['in','nach','aus']],
+['t','Complete: Ich komme ___ Italien.','aus']]],
+
+/* 28 Passado: Perfekt */
+['<h4>Como se forma</h4><p><b>haben ou sein</b> (2ª posição) + <b>particípio II</b> (no fim da frase).</p><p>Ich habe Pizza <b>gegessen</b>. · Er ist nach Berlin <b>gefahren</b>.</p><h4>O particípio</h4>'+tb(['<b>tipo</b>|<b>regra</b>|<b>exemplo</b>','regular|ge- + radical + -t|machen → gemacht, lernen → gelernt','irregular|ge- + radical + -en|essen → gegessen, sehen → gesehen','separável|ge entre prefixo e radical|aufstehen → aufgestanden','inseparável|sem ge-|besuchen → besucht','verbos em -ieren|sem ge-|studieren → studiert'])+'<h4>haben ou sein?</h4><p><b>sein</b>: movimento (gehen, fahren, fliegen, kommen) e mudança de estado (aufstehen, einschlafen), além de sein, bleiben e werden. <b>haben</b>: todos os demais.</p>'+tb(['gehen|ist gegangen','fahren|ist gefahren','kommen|ist gekommen','essen|hat gegessen','sehen|hat gesehen','machen|hat gemacht','arbeiten|hat gearbeitet','sein|ist gewesen'])+'<p>Atenção: com sein, a ideia é a de “ir de um lugar a outro”. Na fala, o Perfekt é o passado mais comum.</p>',[
+['m','Complete: Ich ___ nach Rom geflogen.',['bin','habe','war']],
+['t','Complete: Ich habe Pizza ___. (essen)','gegessen'],
+['m','Complete: Er hat Deutsch ___. (lernen)',['gelernt','gelernen','lernt']],
+['t','Complete: Wir sind nach Berlin ___. (fahren)','gefahren'],
+['m','Particípio de “aufstehen”:',['aufgestanden','gestandenauf','aufstehen']],
+['t','Particípio de “machen”:','gemacht'],
+['m','Particípio de “studieren”:',['studiert','gestudiert','studieret']],
+['t','Complete: Gestern habe ich viel ___. (arbeiten)','gearbeitet'],
+['m','Qual verbo usa sein no Perfekt?',['gehen','essen','machen']],
+['m','Qual frase está correta?',['Ich habe einen Film gesehen.','Ich habe gesehen einen Film.','Ich gesehen habe einen Film.']]]],
+
+/* 29 Präteritum de sein e haben */
+['<h4>Conjugação</h4>'+tb(['<b>pronome</b>|<b>sein</b>|<b>haben</b>','ich|war|hatte','du|warst|hattest','er/sie/es|war|hatte','wir|waren|hatten','ihr|wart|hattet','sie/Sie|waren|hatten'])+'<h4>Uso</h4><p>Com <b>sein</b> e <b>haben</b>, o Präteritum é preferido até na fala, em vez do Perfekt.<br>Gestern <b>war</b> ich müde. · Ich <b>hatte</b> keine Zeit. · Wir <b>waren</b> im Kino.</p><p>Os verbos modais também usam o Präteritum no dia a dia: <b>konnte</b> (podia), <b>musste</b> (tinha que), <b>wollte</b> (queria).</p><p>Atenção: <b>ich</b> e <b>er/sie/es</b> têm a mesma forma (war, hatte), sem terminação. Compare <i>ihr wart</i> (vocês eram) com <i>sie waren</i> (eles eram).</p>',[
+['m','Complete: Gestern ___ ich müde.',['war','hatte','bin']],
+['t','Complete: Wir ___ gestern im Kino. (sein)','waren'],
+['m','Complete: Er ___ keine Zeit. (haben)',['hatte','hatten','hat']],
+['t','Complete: Du ___ Hunger. (haben)','hattest'],
+['m','Complete: Ihr ___ zu Hause. (sein)',['wart','waren','war']],
+['t','Complete: Sie ___ krank. (eles, sein)','waren'],
+['m','“Ich hatte Glück” significa:',['Eu tive sorte','Eu tenho sorte','Eu terei sorte']],
+['t','Complete: Ich ___ letzte Woche in Rom. (sein)','war'],
+['m','Qual é o Präteritum de “du bist”?',['warst','wart','war']],
+['m','Complete: Wir ___ keine Zeit. (haben)',['hatten','hatte','hattet']]]]
+];
+
+var M2=M2a.concat(M2b);
+M2.forEach(function(m,i){var r=D[0][2][7+i];r[1]=m[1].length+' exercícios';r[6]=m[1].map(bx);T[0][7+i]=m[0]});
+var F=[[
+'Hallo=oi;Guten Morgen=bom dia;Guten Abend=boa noite (ao chegar);Gute Nacht=boa noite (ao dormir);Tschüss=tchau;Auf Wiedersehen=adeus (formal);Danke=obrigado;Bitte=por favor / de nada',
+'Ich heiße…=meu nome é…;Ich komme aus…=eu venho de…;Ich wohne in…=eu moro em…;Wie alt bist du?=quantos anos você tem?;Wie heißen Sie?=como o senhor se chama?',
+'ä=som de é;ö=entre ê e é;ü=i arredondado;ß=ss;ei=ai;ie=i longo;sch=x',
+'ich=eu;du=tu;er=ele;sie=ela / eles;es=neutro;wir=nós;ihr=vocês;Sie=o senhor (formal)',
+'ich bin=eu sou / estou;du hast=tu tens;er hat=ele tem;wir sind=nós somos;ihr seid=vocês são;sie haben=eles têm',
+'Wer=quem;Was=o quê;Wo=onde;Woher=de onde;Wohin=para onde;Wie=como;Wann=quando;Warum=por quê',
+'eins=1;zwei=2;fünf=5;zwölf=12;sechzehn=16;siebzehn=17;zwanzig=20',
+'das Auto=o carro;die Freude=a alegria;der Tisch=a mesa;das Buch=o livro',
+'der Mann=o homem;die Frau=a mulher;das Kind=a criança;die Kinder=as crianças',
+'ein Mann=um homem;eine Frau=uma mulher;ein Kind=uma criança;eine Lampe=uma lâmpada',
+'der Tag / die Tage=dia / dias;das Kind / die Kinder=criança / crianças;die Frau / die Frauen=mulher / mulheres;das Auto / die Autos=carro / carros;die Mutter / die Mütter=mãe / mães',
+'die Tischlampe=a luminária de mesa;die Haustür=a porta de casa;der Kühlschrank=a geladeira;die Zahnbürste=a escova de dentes',
+'machen=fazer;lernen=aprender;wohnen=morar;kaufen=comprar;arbeiten=trabalhar',
+'sprechen=falar;lesen=ler;sehen=ver;essen=comer;fahren=dirigir / ir de veículo;schlafen=dormir;laufen=correr',
+'können=poder;müssen=ter que;wollen=querer;dürfen=ter permissão;sollen=dever;möchten=gostaria',
+'aufstehen=levantar-se;einkaufen=fazer compras;anrufen=telefonar;mitkommen=ir junto;fernsehen=assistir TV',
+'heute=hoje;morgen=amanhã;jetzt=agora;gern=com prazer;oft=frequentemente',
+'Wo wohnst du?=onde você mora?;Was machst du?=o que você faz?;Wann kommt er?=quando ele vem?;Warum lernst du Deutsch?=por que você aprende alemão?',
+'Kommst du heute?=você vem hoje?;Ja=sim;Nein=não;Hast du Zeit?=você tem tempo?',
+'Komm!=venha! (du);Kommt!=venham! (ihr);Kommen Sie!=venha! (formal);Warte!=espere!;Bitte hilf mir!=por favor, ajude-me!',
+'Das Kind spielt.=a criança brinca.;Die Frau schläft.=a mulher dorme.;Der Mann liest.=o homem lê.',
+'den Mann=o homem (acusativo);einen Hund=um cachorro;keinen Bruder=nenhum irmão;meinen Vater=meu pai',
+'Wie geht es dir?=como você está?;Mir geht es gut.=eu estou bem.;mit dem Bus=de ônibus;nach Hause=para casa;zum Arzt=ao médico',
+'kein Auto=nenhum carro;keine Zeit=nenhum tempo;keinen Hunger=nenhuma fome;kein Geld=nenhum dinheiro',
+'nicht=não (nega o verbo);Ich arbeite nicht.=eu não trabalho.;nicht mein Auto=não é meu carro;nicht gut=não é bom',
+'mein=meu;dein=teu;sein=dele;ihr=dela;unser=nosso;euer=de vocês;Ihr=do senhor',
+'um 8 Uhr=às 8 horas;am Montag=na segunda-feira;am Morgen=de manhã;im Juli=em julho;im Sommer=no verão',
+'in=em / para dentro;auf=sobre;aus=de (origem);nach=para (cidade/país);zu=para (pessoa/lugar);bei=na casa de;mit=com;von=de',
+'gegessen=comido;gefahren=dirigido / ido;gemacht=feito;gelernt=aprendido;Ich habe gegessen.=eu comi.;Ich bin gefahren.=eu fui.',
+'ich war=eu era / estava;du warst=tu eras;ich hatte=eu tinha;wir waren=nós éramos;wir hatten=nós tínhamos',
+'einundzwanzig=21;dreißig=30;hundert=100;tausend=1.000;halb drei=duas e meia;Viertel nach=quinze depois;der Euro=o euro;der Cent=o centavo',
+'die Eltern=os pais;die Geschwister=os irmãos;die Großeltern=os avós;ledig=solteiro;verheiratet=casado;geschieden=divorciado;die Kinder=os filhos',
+'der Lehrer=o professor;die Ärztin=a médica;der Koch=o cozinheiro;das Büro=o escritório;die Firma=a empresa;Was bist du von Beruf?=qual é a sua profissão?',
+'das Brot=o pão;das Wasser=a água;der Apfel=a maçã;das Fleisch=a carne;die Flasche=a garrafa;die Rechnung=a conta;Ich möchte…=eu gostaria de…',
+'das Haus=a casa;die Wohnung=o apartamento;die Küche=a cozinha;das Bad=o banheiro;das Schlafzimmer=o quarto;das Wohnzimmer=a sala;die Miete=o aluguel',
+'frühstücken=tomar café da manhã;arbeiten=trabalhar;fernsehen=assistir TV;schlafen gehen=ir dormir;Musik hören=ouvir música;ins Kino gehen=ir ao cinema',
+'der Bahnhof=a estação;die Apotheke=a farmácia;die Bank=o banco;die Post=o correio;links=à esquerda;rechts=à direita;geradeaus=em frente;der Zug=o trem',
+'die Hose=a calça;das Hemd=a camisa;das Kleid=o vestido;die Schuhe=os sapatos;rot=vermelho;blau=azul;grün=verde;teuer=caro;billig=barato',
+'der Kopf=a cabeça;der Bauch=a barriga;die Hand=a mão;das Bein=a perna;die Kopfschmerzen=a dor de cabeça;der Arzt=o médico',
+'Die Sonne scheint.=o sol brilha.;Es regnet.=está chovendo.;Es schneit.=está nevando.;kalt=frio;warm=quente;windig=ventoso',
+'Achtung!=atenção!;der Anruf=a ligação;die Durchsage=o anúncio;Noch einmal, bitte.=mais uma vez, por favor.;Langsamer, bitte.=mais devagar, por favor.',
+'die Miete=o aluguel;der Preis=o preço;die Öffnungszeiten=o horário de funcionamento;geöffnet=aberto;geschlossen=fechado',
+'der Vorname=o primeiro nome;der Nachname=o sobrenome;die Adresse=o endereço;das Geburtsdatum=a data de nascimento;Liebe Anna,=querida Anna,;Viele Grüße=abraços',
+'Können Sie mir helfen?=o senhor pode me ajudar?;Wie bitte?=como disse?;Entschuldigung=desculpe;Wie schreibt man das?=como se escreve isso?;Meine Telefonnummer ist…=meu telefone é…'],[
+'gegessen=comido;gegangen=ido;gesehen=visto;gekauft=comprado;gearbeitet=trabalhado',
+'den Mann=o homem (acusativo);einen Hund=um cachorro;die Frau=a mulher (acusativo);das Kind=a criança (acusativo)',
+'ich kann=eu posso;ich muss=eu tenho que;ich will=eu quero;ich darf=eu tenho permissão;ich soll=eu devo',
+'aufstehen=levantar-se;anrufen=telefonar;einkaufen=fazer compras;abfahren=partir;ankommen=chegar',
+'weil=porque;denn=pois;Ich bleibe zu Hause, weil ich krank bin.=fico em casa porque estou doente.',
+'dem Mann=ao homem;der Frau=à mulher;dem Kind=à criança;helfen=ajudar;danken=agradecer;gefallen=agradar'],[
+'ich war=eu era;ich hatte=eu tinha;ich konnte=eu podia;er wurde=ele se tornou;wir gingen=nós fomos',
+'dass=que (conjunção);Ich glaube, dass…=acredito que…;Ich weiß, dass…=sei que…;Ich hoffe, dass…=espero que…',
+'ich hätte=eu teria;ich wäre=eu seria;ich würde=eu faria;Könnten Sie…?=o senhor poderia…?;Ich hätte gern…=eu gostaria de…',
+'der Mann, der…=o homem que…;die Frau, die…=a mulher que…;das Buch, das…=o livro que…',
+'wird gebaut=é construído;wurde gebaut=foi construído;von=por (agente);werden=tornar-se / auxiliar do passivo',
+'sich freuen=alegrar-se;sich interessieren=interessar-se;sich erinnern=lembrar-se;sich waschen=lavar-se;sich ärgern=irritar-se'],[
+'des Mannes=do homem;der Frau=da mulher;wegen=por causa de;trotz=apesar de;während=durante;statt=em vez de',
+'er sei=ele seja;sie habe=ela tenha;er komme=ele venha;Er sagt, er sei krank.=ele diz que está doente.',
+'warten auf=esperar por;denken an=pensar em;sich ärgern über=irritar-se com;träumen von=sonhar com;sich freuen auf=aguardar com alegria',
+'die Entscheidung=a decisão;die Möglichkeit=a possibilidade;die Freiheit=a liberdade;der Lehrer=o professor;die Wohnung=a moradia',
+'schlafend=dormindo;das schlafende Kind=a criança que dorme;gelöst=resolvido;das gelöste Problem=o problema resolvido',
+'obwohl=embora;trotzdem=mesmo assim;dennoch=ainda assim;allerdings=porém;zwar … aber=de fato … mas'],[
+'Ich bitte um Ihre Rückmeldung.=peço seu retorno.;Mit freundlichen Grüßen=atenciosamente;Sehr geehrte Damen und Herren=prezados senhores;Meld dich mal!=dê notícias! (informal)',
+'ich wäre gekommen=eu teria vindo;ich hätte gewusst=eu teria sabido;er hätte bestanden=ele teria passado;ich hätte kommen können=eu poderia ter vindo',
+'die gelösten Probleme=os problemas resolvidos;die laufenden Kosten=os custos correntes;die genannten Zahlen=os números citados',
+'Das ist mir Wurst.=tanto faz.;Ich verstehe nur Bahnhof.=não entendo nada.;Daumen drücken=torcer;Tomaten auf den Augen haben=não ver o óbvio',
+'eine Entscheidung treffen=tomar uma decisão;Angst haben=ter medo;in Frage stellen=questionar;zur Verfügung stehen=estar disponível;Rücksicht nehmen=ter consideração',
+'trotzdem=mesmo assim;dennoch=ainda assim;hingegen=por outro lado;jedoch=porém;deshalb=por isso;außerdem=além disso'],[
+'jemandem einen Bären aufbinden=enganar alguém;den Nagel auf den Kopf treffen=acertar em cheio;Wer rastet, der rostet.=quem para, enferruja.',
+'Es wäre mir lieb, wenn du kämst.=eu gostaria que você viesse.;ich bräuchte=eu precisaria;es wäre schön=seria bom',
+'zügig=rápido (formal);rasch=rápido (formal);flott=rápido (coloquial);beginnen=começar (formal);loslegen=começar (coloquial)',
+'der Zahn der Zeit=o desgaste do tempo;ein Licht am Ende des Tunnels=luz no fim do túnel;den roten Faden verlieren=perder o fio da meada',
+'die Prüfung=a verificação;die Zusage=a confirmação;infolge=em consequência de;erfolgen=ocorrer',
+'Hätte ich das gewusst,…=se eu tivesse sabido,…;Wäre er pünktlich gewesen,…=se ele tivesse sido pontual,…;Sollte es regnen,…=caso chova,…']];
+var fc=null,lastCur=0;
+function cards(lv){var out=[];D.forEach(function(l,i){if(lv!==undefined&&lv!==i)return;l[2].forEach(function(_,j){if(!done[i+'-'+j]||!F[i]||!F[i][j])return;F[i][j].split(';').forEach(function(c){var p=c.split('=');out.push({de:p[0],pt:p[1],lv:l[0]})})})});return out}
+function fcStart(lv){fc={q:shuf(cards(lv)),flip:false,lv:lv};fc.total=fc.q.length;fcView()}
+function fcView(){
+var t=fc.lv===undefined?'todos os níveis':D[fc.lv][0],h='<h2>Flashcards · '+t+'</h2>',c=fc.q[0];
+if(!fc.total)h+='<div class="msg">Nenhuma carta disponível. Marque lições como concluídas para liberar as palavras delas.</div>';
+else if(!c)h+='<div class="msg go"><b>Baralho concluído!</b> Você dominou as '+fc.total+' cartas. <button data-again="1">Estudar de novo</button></div>';
+else h+='<p class="mu">'+(fc.total-fc.q.length)+' de '+fc.total+' dominadas</p><button class="card" data-flip="1"><span class="lv">'+c.lv+'</span><span class="w">'+(fc.flip?c.pt:c.de)+'</span><span class="hint">'+(fc.flip?'Português':'Alemão')+' · toque para virar</span></button><div class="fcb"><button data-say="1">Ouvir</button>'+(fc.flip?'<button data-rev="1">Revisar depois</button><button data-know="1">Já sei</button>':'<button data-flip="1">Virar</button>')+'</div>';
+h+='<div class="foot"><button data-fcback="1">Voltar</button></div>';
+$('mn').innerHTML=h}
+var TH={light:['Branco','w'],dark:['Preto','b'],midnight:['Meia-noite','m'],blue:['Azul','a'],german:['Alemão','g'],forest:['Floresta','f'],sunset:['Pôr do sol','s'],purple:['Roxo','p'],sakura:['Sakura','k'],sepia:['Sépia','e'],neon:['Neon','n'],contrast:['Alto contraste','c']};
+$('tmenu').innerHTML=Object.keys(TH).map(function(k){return '<button role="menuitemradio" data-th="'+k+'"><span class="sw '+TH[k][1]+'"></span>'+TH[k][0]+'</button>'}).join('');
+function theme(t){if(!TH[t])t='light';document.documentElement.setAttribute('data-theme',t);$('tl').textContent='Tema: '+TH[t][0];$('tsw').className='sw '+TH[t][1];document.querySelectorAll('#tmenu button').forEach(function(b){b.setAttribute('aria-checked',b.dataset.th===t?'true':'false')});try{localStorage.setItem('treppe-theme',t)}catch(e){}}
+function tmenu(open){$('tmenu').hidden=!open;$('tg').setAttribute('aria-expanded',open?'true':'false')}
+var st0=null;try{st0=localStorage.getItem('treppe-theme')}catch(e){}
+theme(st0||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+$('tg').onclick=function(e){e.stopPropagation();tmenu($('tmenu').hidden)};
+$('tmenu').onclick=function(e){var b=e.target.closest('button');if(!b)return;e.stopPropagation();theme(b.dataset.th);tmenu(false);$('tg').focus()};
+document.addEventListener('click',function(){if(!$('tmenu').hidden)tmenu(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('tmenu').hidden){tmenu(false);$('tg').focus()}});
+for(var i=0;i<D.length;i++){if(pct(i)<100&&open_(i)){cur=i;break}}
+level();
+</script>
+</body>
+</html>

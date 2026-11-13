@@ -1,0 +1,8 @@
+{
+  "appId": "com.treppe.app",
+  "appName": "Treppe",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#14213d"
+  }
+}
